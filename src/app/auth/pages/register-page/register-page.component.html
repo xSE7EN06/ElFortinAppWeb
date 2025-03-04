@@ -1,0 +1,74 @@
+<div class="login-page">
+    <mat-card>
+      <div class="card-layout">
+        <div class="form-container">
+          <mat-card-header>
+            <mat-card-title>Registrar</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <!-- Inicio del Stepper -->
+            <mat-stepper [linear]="isLinear" #stepper>
+              <mat-step [stepControl]="firstFormGroup">
+                <ng-template matStepLabel>Datos personales</ng-template>
+                <form [formGroup]="firstFormGroup" class="form-grid">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Nombres</mat-label>
+                    <input matInput placeholder="Angel Geovanny" formControlName="firstName" required>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Apelliod Paterno</mat-label>
+                    <input matInput placeholder="Alvarez" formControlName="lastName" required>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Apelliod Materno</mat-label>
+                    <input matInput placeholder="Ordinola" formControlName="lastName" required>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Télefono</mat-label>
+                    <input matInput placeholder="2712335678" formControlName="lastName" required>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Rol</mat-label>
+                    <input matInput placeholder="Empleado" formControlName="lastName" required>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Correo</mat-label>
+                    <input matInput placeholder="john@example.com" formControlName="lastName" required>
+                  </mat-form-field>
+                  <button mat-button matStepperNext>Siguiente</button>
+                </form>
+              </mat-step>
+              <mat-step [stepControl]="secondFormGroup">
+                <ng-template matStepLabel>Datos usuario</ng-template>
+                <form [formGroup]="secondFormGroup" class="form-grid">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Nombre de usuario</mat-label>
+                    <input matInput formControlName="address" placeholder="juancho24" required>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput formControlName="address" placeholder="Contraseña" required>
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Confirmar contraseña</mat-label>
+                    <input matInput formControlName="address" required>
+                  </mat-form-field>
+                  <button mat-button matStepperPrevious>Regresar</button>
+                  <button mat-button matStepperNext>Siguiente</button>
+                </form>
+              </mat-step>
+              <mat-step>
+                <p>Mostrar Nombre</p>
+                <div>
+                    <button mat-button (click)="finish()">Finalizar</button>
+                    <button mat-button matStepperPrevious>Regresar</button>
+                </div>
+              </mat-step>
+            </mat-stepper>
+            <!-- Fin del Stepper -->
+          </mat-card-content>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  

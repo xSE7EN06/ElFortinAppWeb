@@ -1,0 +1,116 @@
+/* Establece el fondo de la página completa */
+body {
+    background-color: #f5f5f5; /* Un gris claro, ajusta según tus preferencias */
+    margin: 0; /* Elimina los márgenes por defecto */
+    padding: 0; /* Elimina el padding por defecto */
+    font-family: Arial, sans-serif; /* Opcional: establece una fuente general */
+  }
+  
+  
+  .login-page {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Utiliza el 100% de la altura de la ventana */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Color de fondo opcional */
+  }
+  
+  mat-card {
+    max-width: 900px; /* O el ancho máximo que prefieras */
+    width: 100%; /* Utiliza todo el ancho hasta el máximo especificado */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Sombra sutil para destacar la tarjeta */
+  }
+  
+  .card-layout {
+    display: flex;
+    flex-direction: row; /* Asegura que los elementos estén en fila */
+    align-items: center;
+    justify-content: space-around; /* Espaciado alrededor de los elementos */
+  }
+  
+  .form-container, .logo-container {
+    flex: 1;
+    padding: 20px; /* Agrega padding para no pegar los contenidos a los bordes */
+  }
+  
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-container img{
+    max-width: 400px; /* Limita el tamaño del logo */
+    height: auto; /* Mantiene la proporción */
+  }
+  
+  /* Estilos para formularios y botones */
+  mat-form-field {
+    width: 100%;
+    margin-top: 20px; /* Agrega espacio en la parte superior de cada campo */
+  }
+  
+  button {
+    width: 100%; /* Hace que el botón se expanda para llenar el contenedor */
+    margin-top: 20px;
+  }
+  
+  /* En tu archivo styles.css o en el componente específico */
+  mat-card-header {
+    padding: 20px; /* Ajusta según tus necesidades */
+  }
+  
+  mat-card-title {
+    font-size: 24px; /* Ajusta según tus necesidades */
+    margin-bottom: 10px; /* Ajusta según tus necesidades */
+  }
+  
+  .text{
+    font-size: 13px;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* dos columnas de igual ancho */
+    grid-gap: 10px; /* espacio entre campos */
+  }
+  
+  .form-grid .mat-form-field {
+    width: 100%; /* asegura que los campos llenen su celda en la grilla */
+  }
+
+  /*Estilos de stepper*/
+  
+  /* Personalización de los encabezados del stepper */
+  .mat-step-header {
+    height: 72px; /* Aumenta la altura para dar más espacio */
+    border-radius: 50%; /* Hace los encabezados completamente circulares */
+    padding: 8px; /* Espacio interior para centrar visualmente los números */
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1); /* Sombra suave para elevar los encabezados */
+  }
+  
+  .mat-horizontal-stepper-header {
+    align-items: center; /* Alinea los elementos internos verticalmente */
+  }
+  
+  .mat-step-icon-selected, .mat-step-icon-state-done, .mat-step-icon-not-touched {
+    background-color: #3f51b5; /* Color de fondo para los íconos seleccionados y completados */
+  }
+  
+  .mat-stepper-horizontal-line {
+    min-height: 3px; /* Hace la línea un poco más gruesa */
+  }
+  
+  /* Estilo para los campos de formulario */
+  .mat-form-field {
+    width: 100%; /* Ajusta el ancho al 100% para usar todo el espacio disponible */
+    margin-bottom: 16px; /* Margen debajo de cada campo para espacio adicional */
+  }
+  
+  /* Botones del formulario */
+  button.mat-stepper-next, button.mat-stepper-previous {
+    margin-top: 20px; /* Espacio adicional encima de los botones */
+    margin-right: 8px; /* Espacio entre botones si hay más de uno */
+  }
