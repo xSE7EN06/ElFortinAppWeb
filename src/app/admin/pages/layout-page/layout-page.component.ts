@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout-page',
@@ -12,4 +13,11 @@ export class LayoutPageComponent {
     {label: 'Productos', icon:'inventory', url: 'products'},
     {label: 'Ordenes', icon: 'receipt', url: 'order'}
   ]
+
+  constructor(private router: Router){}
+
+  exit(){
+    this.router.navigate(['/auth']);
+  }
+
 }
