@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
-
+import{authGuard} from './shared/guards/auth.guard';
 const routes: Routes = [
   {
     path: 'auth', //Ruta padre para autenticacion
@@ -10,8 +10,8 @@ const routes: Routes = [
 
   {
     path: 'admin', //Ruta padre para heroes
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    //lazy loading carfa el modulo de autenticacion solo cuando se accede a heroes
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), //lazy loading carfa el modulo de autenticacion solo cuando se accede a heroes
+    // canActivate: [authGuard] //Guardia preparada para proteger la ruta de admin
   },
   
   {
