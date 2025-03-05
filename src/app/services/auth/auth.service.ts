@@ -13,10 +13,7 @@ export class AuthService {
     localStorage.setItem('userPassword', user.password);
     localStorage.setItem('userConfirmPassword', user.confirmPassword);
     
-    // Verificar si se guardaron correctamente
-  console.log("Verificar name:", localStorage.getItem('name'));
-  console.log("Verificar userName:", localStorage.getItem('userName'));
-  }
+ }
 
   login(password: string, userName: string): boolean {
     const storedUserName = localStorage.getItem('userName');
@@ -32,9 +29,6 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('userName');
-    localStorage.removeItem('userPassword');
-    localStorage.removeItem('userConfirmPassword');
     localStorage.removeItem('userToken');
     
   }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { AuthService } from '../../../services/auth/auth.service'; 
 @Component({
   selector: 'app-layout-page',
   templateUrl: './layout-page.component.html',
@@ -14,10 +14,11 @@ export class LayoutPageComponent {
     {label: 'Ordenes', icon: 'receipt', url: 'order'}
   ]
 
-  constructor(private router: Router){}
+  constructor(private router: Router,private authService: AuthService){}
 
   exit(){
     this.router.navigate(['/auth']);
+    this.authService.logout(); 
   }
 
 }

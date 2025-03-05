@@ -43,15 +43,15 @@
                 <form [formGroup]="secondFormGroup" class="form-grid">
                   <mat-form-field appearance="outline">
                     <mat-label>Nombre de usuario</mat-label>
-                    <input matInput formControlName="address" placeholder="juancho24" required>
+                    <input matInput formControlName="userName" placeholder="juancho24" required>
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Contraseña</mat-label>
-                    <input matInput formControlName="address" placeholder="Contraseña" required>
+                    <input matInput formControlName="password" placeholder="Contraseña" required>
                   </mat-form-field>
                   <mat-form-field appearance="outline">
                     <mat-label>Confirmar contraseña</mat-label>
-                    <input matInput formControlName="address" required>
+                    <input matInput formControlName="confirmPassword" required>
                   </mat-form-field>
                   <button mat-button matStepperPrevious>Regresar</button>
                   <button mat-button matStepperNext>Siguiente</button>
@@ -60,7 +60,7 @@
               <mat-step>
                 <p>Mostrar Nombre</p>
                 <div>
-                    <button mat-button (click)="finish()">Finalizar</button>
+                    <button mat-button (click)="register()">Finalizar</button>
                     <button mat-button matStepperPrevious>Regresar</button>
                 </div>
               </mat-step>

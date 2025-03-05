@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth/auth.service'; 
 
 @Component({
   selector: 'app-register-page',
@@ -13,14 +14,15 @@ export class RegisterPageComponent {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private route: Router) {
+  constructor(private _formBuilder: FormBuilder, private route: Router, private authService: AuthService) {
     this.firstFormGroup = this._formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
-      address: ['', Validators.required],
-      city: ['', Validators.required]
+      userName: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
     });
   }
 
@@ -30,17 +32,23 @@ export class RegisterPageComponent {
   // Opcional: Método para registrar los datos o manejar el final del stepper
   register() {
     if (this.firstFormGroup.valid && this.secondFormGroup.valid) {
-      // Aquí manejarías la lógica para procesar los datos del formulario
-      console.log('Registration successful');
-      console.log('Name:', this.firstFormGroup.value);
-      console.log('Address:', this.secondFormGroup.value);
+      const userData = this.secondFormGroup.value;
+
+      // Llamamos al servicio para registrar al usuario
+      this.authService.register(userData);
+      
+      console.log('Registro exitoso:', userData);
+     
+
+      // Redirigir después del registro
+      this.finish();
     } else {
       console.log('Form is not completely valid');
     }
   }
 
   finish(){
-    this.route.navigate(['/admin']);
+    this.route.navigate(['/auth/login']);
   }
 }
 
