@@ -1,24 +1,6 @@
 import { Component } from '@angular/core';
-
-export interface OrderData {
-  id: string;
-  productId: string;
-  quantity: number;
-  date: Date;
-}
-
-const ORDER_DATA: OrderData[] = [
-  { id: '1', productId: '101', quantity: 2, date: new Date('2022-10-05') },
-  { id: '2', productId: '102', quantity: 1, date: new Date('2022-10-06') },
-  { id: '3', productId: '103', quantity: 4, date: new Date('2022-10-07') },
-  { id: '4', productId: '104', quantity: 1, date: new Date('2022-10-08') },
-  { id: '5', productId: '105', quantity: 3, date: new Date('2022-10-09') },
-  { id: '6', productId: '106', quantity: 5, date: new Date('2022-10-10') },
-  { id: '7', productId: '107', quantity: 2, date: new Date('2022-10-11') },
-  { id: '8', productId: '108', quantity: 2, date: new Date('2022-10-12') },
-  { id: '9', productId: '109', quantity: 3, date: new Date('2022-10-13') },
-  { id: '10', productId: '110', quantity: 1, date: new Date('2022-10-14') }
-];
+import { Order } from '../../../shared/models/order/order';
+import { OrdersService } from '../../../services/orders/orders.service';
 
 @Component({
   selector: 'app-order-page',
@@ -27,18 +9,31 @@ const ORDER_DATA: OrderData[] = [
   standalone: false
 })
 export class OrderPageComponent {
-  displayedColumns: string[] = ['id', 'productId', 'quantity', 'date'];
-    dataSource = ORDER_DATA;
+  displayedColumns: string[] = ['id', 'table_number', 'order_date', 'total_amount', 'payment_method_id', 'actions'];
+    Orders:Order[]=[];
   
-    edit(order: OrderData) {
-        // Aquí va la lógica para editar un usuario
-        console.log('Edit order:', order);
-        // Por ejemplo, abrir un modal de edición o redirigir a un formulario de edición
-      }
+  constructor(private orderService: OrdersService){}
+
+  ngOnInit(){
+    this.getOrders();
+  }
+
+  getOrders() {
+      this.orderService.getOrders().subscribe(
+        (orders: Order[]) => {
+          this.Orders = orders; 
+        },
+        (error) => {
+          console.error('Error al obtener los pedidos:', error);
+        }
+      );
+    }
+
+    edit(order: Order) {
+
+    }
     
-      delete(order: OrderData) {
-        // Aquí va la lógica para eliminar un usuario
-        console.log('Delete order:', order);
-        // Implementa la eliminación de usuarios aquí
-      }
+    delete(order: Order) {
+      
+    }
 }
