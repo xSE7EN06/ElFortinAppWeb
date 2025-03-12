@@ -10,7 +10,7 @@ import { UsersService } from '../../../services/users/users.service';
 })
 export class UsersPageComponent {
   displayedColumns: string[] = ['id', 'name', 'role', 'actions'];
-  dataSource: User[] = [];
+  Users: User[] = [];
 
   constructor(private usuarioService: UsersService){}
 
@@ -21,7 +21,7 @@ export class UsersPageComponent {
   getUsuarios() {
     this.usuarioService.getUsuarios().subscribe(
       (usuarios: User[]) => {
-        this.dataSource = usuarios; 
+        this.Users = usuarios; 
       },
       (error) => {
         console.error('Error al obtener usuarios:', error);
