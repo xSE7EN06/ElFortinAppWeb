@@ -9,7 +9,7 @@ import { UsersService } from '../../../services/users/users.service';
   standalone: false
 })
 export class UsersPageComponent {
-  displayedColumns: string[] = ['id', 'name', 'role', 'actions'];
+  displayedColumns: string[] = ['id', 'name','email', 'role', 'actions'];
   Users: User[] = [];
 
   constructor(private usuarioService: UsersService){}
