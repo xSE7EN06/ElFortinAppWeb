@@ -1,17 +1,6 @@
 import { Component } from '@angular/core';
-
-export interface UserData {
-  id: string;
-  name: string;
-  role: string;
-}
-
-const ELEMENT_DATA: UserData[] = [
-  {id: '1', name: 'John Doe', role: 'Administrator'},
-  {id: '2', name: 'Jane Doe', role: 'User'},
-  // más usuarios...
-];
-
+import {User} from '../../../shared/models/user/user'
+import { UsersService } from '../../../services/users/users.service';
 
 @Component({
   selector: 'app-users-page',
@@ -21,18 +10,30 @@ const ELEMENT_DATA: UserData[] = [
 })
 export class UsersPageComponent {
   displayedColumns: string[] = ['id', 'name', 'role', 'actions'];
-  dataSource = ELEMENT_DATA;
+  dataSource: User[] = [];
 
+  constructor(private usuarioService: UsersService){}
 
-  edit(user: UserData) {
-    // Aquí va la lógica para editar un usuario
-    console.log('Edit user:', user);
-    // Por ejemplo, abrir un modal de edición o redirigir a un formulario de edición
+  ngOnInit(){
+    this.getUsuarios();
   }
 
-  delete(user: UserData) {
-    // Aquí va la lógica para eliminar un usuario
-    console.log('Delete user:', user);
-    // Implementa la eliminación de usuarios aquí
+  getUsuarios() {
+    this.usuarioService.getUsuarios().subscribe(
+      (usuarios: User[]) => {
+        this.dataSource = usuarios; 
+      },
+      (error) => {
+        console.error('Error al obtener usuarios:', error);
+      }
+    );
+  }
+
+  edit(user: User) {
+  
+  }
+
+  delete(user: User) {
+ 
   }
 }
