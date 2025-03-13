@@ -48,7 +48,7 @@ export class UsersPageComponent {
           next: () => {
             this.mostrarDialog(
               'Usuario Eliminado',
-              ':)',
+              'El usuario fue eliminado satisfactoriamente',
               null
             );
             this.getUsuarios();
@@ -56,7 +56,7 @@ export class UsersPageComponent {
           error: (err) => {
             this.mostrarDialog(
               'Error al eliminar el usuario',
-              ':(',
+              'Hubo un error al eliminar el usuario :(',
               null
             );
           }
