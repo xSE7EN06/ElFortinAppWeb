@@ -27,7 +27,10 @@
                 La contraseña debe tener al menos 6 caracteres.
               </mat-error>
             </mat-form-field>
-            <button mat-raised-button color="primary" type="submit" (click)="login()">Iniciar Sesión</button>
+            <button mat-raised-button color="primary" (click)="login()" [disabled]="isLoading">
+              <mat-spinner *ngIf="isLoading" diameter="24"></mat-spinner>
+              <span *ngIf="!isLoading">Iniciar sesión</span>
+            </button>            
             <br>  
             <br>
             <p class="text">¿No tienes una cuenta? <strong><a (click)="register()" style="cursor: pointer; color: blue;">Crear cuenta</a></strong></p>
