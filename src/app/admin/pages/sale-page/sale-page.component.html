@@ -1,0 +1,45 @@
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="sales" class="mat-elevation-z8">
+    
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+    
+      <!-- ID del restaurante -->
+      <ng-container matColumnDef="restaurant">
+        <th mat-header-cell *matHeaderCellDef> Restaurante </th>
+        <td mat-cell *matCellDef="let element"> {{element.restaurant_name}} </td>
+      </ng-container>
+    
+      <!-- Fecha de la venta -->
+      <ng-container matColumnDef="report_date">
+        <th mat-header-cell *matHeaderCellDef> Fecha</th>
+        <td mat-cell *matCellDef="let element"> {{element.report_date | date}} </td>
+      </ng-container>
+    
+      <!-- Total -->
+      <ng-container matColumnDef="total_sales">
+        <th mat-header-cell *matHeaderCellDef> Total  </th>
+        <td mat-cell *matCellDef="let element"> {{element.total_sales | currency}} </td>
+      </ng-container>
+    
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" aria-label="Edit" (click)="edit(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" aria-label="Delete" (click)="delete(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  
