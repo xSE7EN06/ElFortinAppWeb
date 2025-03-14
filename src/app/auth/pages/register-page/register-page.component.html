@@ -1,74 +1,94 @@
 <div class="login-page">
-    <mat-card>
-      <div class="card-layout">
-        <div class="form-container">
-          <mat-card-header>
-            <mat-card-title>Registrar</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <!-- Inicio del Stepper -->
-            <mat-stepper [linear]="isLinear" #stepper>
-              <mat-step [stepControl]="firstFormGroup">
-                <ng-template matStepLabel>Datos personales</ng-template>
-                <form [formGroup]="firstFormGroup" class="form-grid">
-                  <mat-form-field appearance="outline">
-                    <mat-label>Nombres</mat-label>
-                    <input matInput placeholder="Angel Geovanny" formControlName="firstName" required>
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Apelliod Paterno</mat-label>
-                    <input matInput placeholder="Alvarez" formControlName="lastName" required>
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Apelliod Materno</mat-label>
-                    <input matInput placeholder="Ordinola" formControlName="lastName" required>
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Télefono</mat-label>
-                    <input matInput placeholder="2712335678" formControlName="lastName" required>
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Rol</mat-label>
-                    <input matInput placeholder="Empleado" formControlName="lastName" required>
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Correo</mat-label>
-                    <input matInput placeholder="john@example.com" formControlName="lastName" required>
-                  </mat-form-field>
-                  <button mat-button matStepperNext>Siguiente</button>
-                </form>
-              </mat-step>
-              <mat-step [stepControl]="secondFormGroup">
-                <ng-template matStepLabel>Datos usuario</ng-template>
-                <form [formGroup]="secondFormGroup" class="form-grid">
-                  <mat-form-field appearance="outline">
-                    <mat-label>Nombre de usuario</mat-label>
-                    <input matInput formControlName="userName" placeholder="juancho24" required>
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Contraseña</mat-label>
-                    <input matInput formControlName="password" placeholder="Contraseña" required>
-                  </mat-form-field>
-                  <mat-form-field appearance="outline">
-                    <mat-label>Confirmar contraseña</mat-label>
-                    <input matInput formControlName="confirmPassword" required>
-                  </mat-form-field>
-                  <button mat-button matStepperPrevious>Regresar</button>
-                  <button mat-button matStepperNext>Siguiente</button>
-                </form>
-              </mat-step>
-              <mat-step>
-                <p>Mostrar Nombre</p>
-                <div>
-                    <button mat-button (click)="register()">Finalizar</button>
+  <mat-card>
+    <div class="card-layout">
+      <div class="form-container">
+        <mat-card-header>
+          <mat-card-title>Registrar</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <!-- Inicio del Stepper -->
+          <mat-stepper [linear]="isLinear" #stepper>
+            <!-- Paso 1: Datos personales -->
+            <mat-step [stepControl]="firstFormGroup">
+              <ng-template matStepLabel>Datos personales</ng-template>
+              <form [formGroup]="firstFormGroup" class="form-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Nombres</mat-label>
+                  <input matInput placeholder="Angel Geovanny" formControlName="firstName" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Apellido Paterno</mat-label>
+                  <input matInput placeholder="Alvarez" formControlName="lastName" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Apellido Materno</mat-label>
+                  <input matInput placeholder="Ordinola" formControlName="maternalLastName" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Télefono</mat-label>
+                  <input matInput placeholder="2712335678" formControlName="phone" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Correo</mat-label>
+                  <input matInput placeholder="john@example.com" formControlName="email" required>
+                </mat-form-field>
+                <button mat-button matStepperNext>Siguiente</button>
+              </form>
+            </mat-step>
+
+            <!-- Paso 2: Datos de usuario -->
+            <mat-step [stepControl]="secondFormGroup">
+              <ng-template matStepLabel>Datos usuario</ng-template>
+              <form [formGroup]="secondFormGroup" class="form-grid">
+                <mat-form-field appearance="outline">
+                  <mat-label>Nombre de usuario</mat-label>
+                  <input matInput formControlName="userName" placeholder="juancho24" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Contraseña</mat-label>
+                  <input matInput type="password" formControlName="password" placeholder="Contraseña" required>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                  <mat-label>Confirmar contraseña</mat-label>
+                  <input matInput type="password" formControlName="confirmPassword" required>
+                </mat-form-field>
+                <button mat-button matStepperPrevious>Regresar</button>
+                <button mat-button matStepperNext>Siguiente</button>
+              </form>
+            </mat-step>
+
+            <!-- Paso 3: Confirmación -->
+            <mat-step>
+              <ng-template matStepLabel>Confirmar datos</ng-template>
+              <div class="confirmation-card">
+                <mat-card>                  
+                  <mat-card-content>
+                    <!-- Mostrar datos personales -->
+                    <div class="data-section">
+                      <h3>Datos personales</h3>
+                      <p><strong>Nombre completo:</strong> {{ firstFormGroup.value.firstName }} {{ firstFormGroup.value.lastName }} {{ firstFormGroup.value.maternalLastName }}</p>
+                      <p><strong>Teléfono:</strong> {{ firstFormGroup.value.phone }}</p>
+                      <p><strong>Correo:</strong> {{ firstFormGroup.value.email }}</p>
+                    </div>
+            
+                    <!-- Mostrar datos de usuario -->
+                    <div class="data-section">
+                      <h3>Datos de usuario</h3>
+                      <p><strong>Nombre de usuario:</strong> {{ secondFormGroup.value.userName }}</p>
+                      <p><strong>Contraseña:</strong> {{ secondFormGroup.value.password }}</p>
+                    </div>
+                  </mat-card-content>
+                  <mat-card-actions>
                     <button mat-button matStepperPrevious>Regresar</button>
-                </div>
-              </mat-step>
-            </mat-stepper>
-            <!-- Fin del Stepper -->
-          </mat-card-content>
-        </div>
+                    <button mat-button (click)="register()">Finalizar</button>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
+            </mat-step>
+          </mat-stepper>
+          <!-- Fin del Stepper -->
+        </mat-card-content>
       </div>
-    </mat-card>
-  </div>
-  
+    </div>
+  </mat-card>
+</div>
