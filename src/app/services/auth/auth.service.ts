@@ -1,11 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  constructor() { }
+  apiUrl:string='https://fortin.christba.com/api/login';
+  constructor(private http: HttpClient) { }
 
   register(user: {  userName:string; password: string;  confirmPassword: string; }) {
     // Guardamos los datos en localStorage simulando un registro
@@ -15,30 +17,28 @@ export class AuthService {
     
  }
 
-  login(password: string, userName: string): boolean {
-    const storedUserName = localStorage.getItem('userName');
-    const storedPassword = localStorage.getItem('userPassword');   
-
-    if (userName === storedUserName && password === storedPassword ) {
-      const token = this.generateToken(userName);  // Generar el token
-      this.storeToken(token);  // Almacenar el token en localStorage
-         console.log(localStorage.getItem('userToken'));   
-      return true; // Inicio de sesión exitoso
+    // Función para hacer login
+    login(emailOrNickname: string, password: string): Observable<any> {
+      const body = { emailOrNickname, password }; // Cuerpo de la solicitud
+      return this.http.post(this.apiUrl, body); // Hacer la solicitud POST
     }
-    return false; // Credenciales incorrectas
-  }
+  
 
-  logout() {
+   // Función para eliminar el token (logout)
+   logout(): void {
     localStorage.removeItem('userToken');
-    
+    console.log("Token eliminado");
   }
 
-  generateToken(userName: string): string {
-    return btoa(userName + ':' + new Date().getTime()); // Genera un token básico con el nombre y el timestamp
-  }
 
-  storeToken(token: string) {
+  // Función para almacenar el token en localStorage
+  storeToken(token: string): void {
     localStorage.setItem('userToken', token);
+  }
+
+   // Función para obtener el token desde localStorage
+   getToken(): string | null {
+    return localStorage.getItem('userToken');
   }
 
 }
