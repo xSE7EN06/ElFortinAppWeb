@@ -34,17 +34,15 @@ export class LoginPageComponent {
         if (response.token) {
           // Si la API devuelve un token, lo almacenamos
           this.authService.storeToken(response.token);
-          console.log(this.authService.getToken());
           this.snackBar.open('✅ Login exitoso', 'Cerrar', { duration: 3000 });
           this.route.navigate(['/admin']); // Redirigir al usuario
           
         } else {
-          this.snackBar.open('❌ Credenciales incorrectas', 'Cerrar', { duration: 3000 });
+          this.snackBar.open('❌ Credenciales invállidas', 'Cerrar', { duration: 3000 });
         }
       },
       error: (error) => {
-        console.error('Error en la solicitud:', error);
-        this.snackBar.open('❌ Error en el servidor', 'Cerrar', { duration: 3000 });
+        this.snackBar.open(`❌ Credenciales inválidas`, 'Cerrar', { duration: 3000 });
       },
     });
   } else {
