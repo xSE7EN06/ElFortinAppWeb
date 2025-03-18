@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-
 import { MatTableModule } from '@angular/material/table';
-
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -17,7 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   exports: [
@@ -39,6 +37,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatStepperModule,
     MatButtonModule,
     MatTableModule
-  ]
+    
+  ],
 })
 export class MaterialModule { }
