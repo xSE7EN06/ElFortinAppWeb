@@ -61,5 +61,39 @@ export class LandigPageComponent implements OnInit {
         }
       });
     }
+
+    // Desplazarse a la sección de contacto
+    const contactoLink = document.querySelector('a[href="#contacto"]');
+    if (contactoLink) {
+      contactoLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const contactoSection = document.getElementById('contacto');
+        if (contactoSection) {
+          contactoSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+
+    //Desplazarse a la sección de testiminios
+    const testimoniosLink = document.querySelector('a[href="#testimonios"]');
+    if (testimoniosLink) {
+      testimoniosLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const testimoniosSection = document.getElementById('testimonios');
+        if (testimoniosSection) {
+          testimoniosSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+
+    // Desplazarse al final de la página
+    const finalLink = document.querySelector('a[href="#final"]');
+    if (finalLink) {
+      finalLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      });
+    }
+
   }
 }

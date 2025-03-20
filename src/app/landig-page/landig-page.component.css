@@ -10,11 +10,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 25px;
   background-color: #8b5e3c;
   color: #fff;
   position: fixed;
-  width: 100%;
+  width: 98%;
   top: 0;
   z-index: 1000;
 }
@@ -72,41 +72,18 @@ body {
   cursor: pointer;
 }
 
-.menu, .promociones, .about {
+.menu, .promociones, .about, .testimonios, .galeria, .contacto, .redes-sociales {
   padding: 80px 20px 40px; /* Ajuste para el header fijo */
   text-align: center;
 }
 
-.quick-order form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.quick-order input {
-  margin: 10px 0;
-  padding: 10px;
-  width: 80%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.quick-order button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #8b5e3c;
-  color: #fff;
-  cursor: pointer;
-}
-
-.promo-grid {
+.menu-grid, .testimonio-grid, .galeria-grid, .redes-grid {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
 
-.promo-card {
+.menu-card, .testimonio-card {
   width: 45%;
   margin: 20px 0;
   background-color: #fff;
@@ -116,18 +93,67 @@ body {
   transition: transform 0.3s;
 }
 
-.promo-card:hover {
+.menu-card:hover, .testimonio-card:hover {
   transform: scale(1.05);
 }
 
-.promo-card img {
+.menu-card img, .testimonio-card img {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
 
-.promo-content {
+.menu-content, .testimonio-content {
   padding: 15px;
+}
+
+.galeria-grid img {
+  width: 45%;
+  margin: 10px 0;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.galeria-grid img:hover {
+  transform: scale(1.05);
+}
+
+.contacto-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contacto-form input, .contacto-form textarea {
+  margin: 10px 0;
+  padding: 10px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contacto-form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #8b5e3c;
+  color: #fff;
+  cursor: pointer;
+}
+
+.redes-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.redes-grid img {
+  width: 50px;
+  transition: transform 0.3s;
+}
+
+.redes-grid img:hover {
+  transform: scale(1.1);
 }
 
 footer {
