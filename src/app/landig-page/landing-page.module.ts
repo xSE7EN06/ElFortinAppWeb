@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LandigPageComponent } from './landig-page.component';
+import { LandigPageComponent } from './landing-page.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [

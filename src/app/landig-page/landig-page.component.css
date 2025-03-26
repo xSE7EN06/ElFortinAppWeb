@@ -1,164 +1,595 @@
+@import url('https://fonts.googleapis.com/css?family=Alex+Brush|Overpass+Mono:600,700');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
 body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4e8d2;
-  color: #5a3e36;
+  overflow-x: hidden;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px;
-  background-color: #8b5e3c;
-  color: #fff;
-  position: fixed;
-  width: 98%;
-  top: 0;
-  z-index: 1000;
+/*
+  GLOBAL
+*/
+h2 {
+  margin-top:0;
+}
+button {
+  border:0;
+  background:0;
+  cursor:pointer;
+}
+a {
+  text-decoration:none;
+  padding-bottom:5px;
+}
+ul {
+  list-style:none;
+  padding:0;
+  margin:0;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
+/*
+  HEADER
+*/
+header {
+  min-height:100vh;
+  background:linear-gradient(to bottom,rgba(0,0,0,.8),transparent),
+    url('http://zigis.com.au/wp-content/uploads/2014/05/holiday2013_front.jpg')no-repeat center center;
+  background-size:cover;
+  background-attachment: fixed;
+  display:flex;
+  flex-direction:column;
 }
 
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 15px;
+/*
+  NAV
+*/
+header nav {
+  padding:15px 35px;
+  display:flex;
+  position:relative;
 }
 
-.nav-links input {
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
+header nav h2 {
+  margin-bottom:0;
+  flex:1;
+  letter-spacing:3px;
+  font-family: 'Overpass Mono', monospace !important;
 }
 
-.nav-links button {
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #5a3e36;
-  color: #fff;
-  cursor: pointer;
+header nav h2 #logo {
+  color:lightgray;
+  text-transform:uppercase;
+  border-bottom:solid 2px lightgray;
 }
 
-.hero {
-  position: relative;
-  height: 400px;
-  background: url('../assets/concha-chocolate.jpg') no-repeat center center/cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  text-align: center;
-  margin-top: 60px; /* Ajuste para el header fijo */
+header nav .nav-button {
+  color: #c0c0c0;
+  font-size:23px;
 }
 
-.product-highlight {
-  background-color: rgba(90, 62, 54, 0.8);
-  padding: 20px;
-  border-radius: 10px;
+header nav div {
+  background:rgba(0,0,0,.9);
+  position:fixed;
+  right:0;
+  left:0;
+  top:0;
+  bottom:0;
+  z-index:1;
+  text-align:center;
+  transform:scale(0);
+  opacity:0;
+  transition:opacity .2s;
 }
 
-.cta {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #8b5e3c;
-  color: #fff;
-  cursor: pointer;
+header nav div ul {
+  position:relative;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 
-.menu, .promociones, .about, .testimonios, .galeria, .contacto, .redes-sociales {
-  padding: 80px 20px 40px; /* Ajuste para el header fijo */
-  text-align: center;
+header nav div ul .exit-menu {
+  position:absolute;
+  top:15px;
+  right:15px;
+  color:lightgray;
+  font-size:20px;
+  padding:10px;
 }
 
-.menu-grid, .testimonio-grid, .galeria-grid, .redes-grid {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+header nav div ul li {
+  font-family: 'PT Sans', sans-serif !important;
+  text-transform:uppercase;
 }
 
-.menu-card, .testimonio-card {
-  width: 45%;
-  margin: 20px 0;
-  background-color: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s;
+header nav div ul li a {
+  display:block;
+  color:lightgray;
+  padding:15px 5px;
+  transition: all .4s;
 }
 
-.menu-card:hover, .testimonio-card:hover {
-  transform: scale(1.05);
+header nav div ul li a:hover, 
+header nav div ul li a.active:hover {
+  color: rgb(190, 128, 64);
+  border-bottom-color: rgb(190, 128, 64);
 }
 
-.menu-card img, .testimonio-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+/*
+  CENTER HEADER TEXT
+*/
+header .center {
+  line-height:0;
+  margin:auto;
+  text-align:center;
+  color:rgb(255,255,255);
 }
 
-.menu-content, .testimonio-content {
-  padding: 15px;
+header .center h1 {
+  font-family: 'Alex Brush', cursive !important;
+  color:rgb(190, 128, 64);
+  font-size:80px;
+  margin-bottom:34px;
 }
 
-.galeria-grid img {
-  width: 45%;
-  margin: 10px 0;
-  border-radius: 10px;
-  transition: transform 0.3s;
+header .center h2 {
+  text-transform:uppercase;
+  letter-spacing:5px;
+  font-size:28px;
 }
 
-.galeria-grid img:hover {
-  transform: scale(1.05);
+header .center #asterisk {
+  color:rgb(190, 128, 64);
+  line-height:0.5;
+  font-size:30px;
+  display:flex;
+  justify-content:center;
 }
 
-.contacto-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+header .center #asterisk:before,
+header .center #asterisk:after {
+  content:"";
+  display:inline-block;
+  position:relative;
+  vertical-align:middle;
+  height:1px;
+  width: 0%;
+  opacity: 0;
+  background:rgb(255,255,255);
 }
 
-.contacto-form input, .contacto-form textarea {
-  margin: 10px 0;
-  padding: 10px;
-  width: 80%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+header .center #asterisk:before {
+  margin-right:10px;
 }
 
-.contacto-form button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #8b5e3c;
-  color: #fff;
-  cursor: pointer;
+header .center #asterisk:after {
+  margin-left:10px;
 }
 
-.redes-grid {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+header .center p {
+  text-transform:uppercase;
+  margin-top:5px;
+  font-size:14px;
+  font-weight:bold;
+  letter-spacing:3px;
 }
 
-.redes-grid img {
-  width: 50px;
-  transition: transform 0.3s;
+nav div.show {
+  transform:scale(1);
+  opacity:1;
 }
 
-.redes-grid img:hover {
-  transform: scale(1.1);
+/*
+  SECTIONS
+*/
+
+/*
+  CLASSES
+*/
+.custom-font {
+  font-family:'Alex Brush', cursive;
+  color:rgb(190, 128, 64);
+  font-size:75px;
+  line-height:0;
 }
 
+.add-padding {
+  padding:25px;
+}
+
+.center-text {
+  text-align:center;
+  margin-bottom:40px;
+  margin-top:30px;
+  color:rgb(77, 77, 77);
+}
+
+.center-text h2 {
+  margin-top:25px;
+  line-height:0;
+}
+
+.center-text p {
+  margin-top:0;
+  font-family: 'PT Sans', sans-serif;
+  line-height:1.5;
+}
+
+.center-text a {
+  font-family: 'PT Sans', sans-serif;
+  color:rgb(190, 128, 64);
+  text-transform:uppercase;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:1px;
+  border-bottom:solid 2px rgb(190, 128, 64); 
+}
+
+.add-flex {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.add-flex .stuffed-cherries {
+  background:url('https://s-media-cache-ak0.pinimg.com/736x/61/b1/98/61b19844448b2bad5c78e9a2c6347986.jpg')no-repeat center center;
+  background-size:cover;
+  height:315px;
+  width:320px;
+}
+
+.center-h1 {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.custom-h1 {
+  text-align:center;
+  color:rgb(255,255,255);
+  letter-spacing:5px;
+  margin-bottom:0;
+}
+
+.custom-h1 span {
+  letter-spacing:0;
+}
+
+/*
+  TASTEFUL RECIPES SECTION
+*/
+.bread-background {
+  background:rgb(0,0,0) url('http://www.performerprosites.com/development/clients/showpalace/wp-content/uploads/2014/05/tasteful-recipies-dinner-theatre.jpg')no-repeat center center;
+  background-size:cover;
+  background-attachment: fixed;
+  height:500px;
+}
+
+/*
+  MENU SECTION
+*/
+.menu {
+  padding:30px;
+}
+
+.menu-images {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-gap:10px;
+}
+
+.menu-images img {
+  width:100%;
+}
+
+/*
+  THE PERFECT BLEND SECTION
+*/
+.cake-background {
+  background:black url('http://www.rustiquerichmond.co.uk/wp-content/uploads/2014/06/desert.jpg')no-repeat center center;
+  background-size:cover;
+  background-attachment: fixed;
+  height:500px;
+}
+
+/*
+  CULINARY DELIGHT SECTION
+*/
+.reservation-section {
+  margin-bottom:40px;
+}
+
+.reservation-section div:first-child {
+  flex:1;
+}
+
+.reservation-section div:last-child {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr;
+  flex:1;
+}
+
+.reservation-section div:last-child img {
+  margin: auto;
+  width:85%;
+}
+
+/*
+  FOOTER
+*/
 footer {
+  background: rgb(20, 20, 20);
+  color: lightgray;
+  padding: 40px 20px;
   text-align: center;
-  padding: 20px;
-  background-color: #8b5e3c;
-  color: #fff;
+  position: relative;
+}
+
+footer .to-top {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+footer .restaurant-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+footer .locations, footer .hours {
+  flex: 1 1 300px;
+  margin: 10px;
+}
+
+footer h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: rgb(190, 128, 64);
+}
+
+footer h5 {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 5px 0;
+}
+
+footer .copyright {
+  background: rgb(35, 35, 35);
+  padding: 10px 20px;
+  font-size: 12px;
+  color: rgb(150, 150, 150);
+}
+
+footer .copyright span {
+  color: rgb(190, 128, 64);
+  border-bottom: 1px solid rgb(190, 128, 64);
+}
+
+/*
+  MEDIA QUERIES
+*/
+@media screen and (max-width: 425px) {
+  header, .bread-background, .cake-background {
+    background-attachment: scroll;
+  }
+}
+
+@media (min-width:768px) {
+  footer .restaurant-info {
+    flex-direction:row;
+    justify-content:space-around;
+    align-items:flex-start;
+  }
+}
+
+@media(min-width:769px) {
+  /*
+    NAV
+  */
+  nav {
+    position:initial !important;
+    align-items:baseline;
+    padding: 20px 70px !important;
+  }
+
+  nav .nav-button {
+    display:none;
+  }
+
+  nav div {
+    position:initial !important;
+    background:none !important;
+    opacity:initial !important;
+    transform:initial !important;
+  }
+
+  nav div ul {
+    position:initial !important;
+    flex-direction:row !important;
+  }
+
+  nav div ul .exit-menu {
+    display:none;
+  }
+
+  nav div ul li a {
+    font-size: 12.8px;
+    margin:0 10px;
+    letter-spacing:1px;
+    padding:5px 0 !important;
+  }
+
+  nav div ul .active {
+    border-bottom:solid 1px lightgray;
+  }
+
+  .add-padding {
+    padding:50px 0;
+  }
+
+  .add-flex {
+    flex-direction:row;
+    align-items:center;
+  }
+
+  .add-flex div:first-child {
+    flex:1;
+    padding:0 50px;
+  }
+
+  .add-flex div:last-child {
+    min-width:400px;
+    margin:50px;
+  }
+
+  .menu {
+    flex:1;
+  }
+
+  .menu div:last-child {
+    flex:1;
+  }
+
+  /*
+    FOOTER
+  */
+  footer .restaurant-info {
+    padding:20px 80px;
+    flex-direction:row;
+    justify-content:space-around;
+  }
+
+  footer .restaurant-info .locations {
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+
+  footer .restaurant-info .locations h4 {
+    flex:1 0 50%;
+  }
+
+  footer .restaurant-info .hours {
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+
+  footer .restaurant-info .hours h4 {
+    flex:1 0 50%;
+  }
+
+  footer .copyright {
+    flex-direction:row;
+    justify-content:space-around;
+  }
+}
+
+/* ANIMATIONS */
+#asterisk {
+  opacity: 0;
+  transform-origin: 50% 4%;
+  animation: spin .5s forwards;
+  animation-delay: .3s;
+}
+
+#asterisk::before, #asterisk::after {
+  transform-origin: center center;
+  animation: grow .5s forwards;
+  animation-delay: .8s;
+}
+
+.center p {
+  transform: translateY(-40px);
+  opacity: 0;
+  animation: fadeDown .9s forwards;
+  animation-delay: 1.3s;
+}
+
+.center h2 {
+  transform: scale(2);
+  opacity: 0;
+  animation: fade .5s forwards;
+}
+
+.center h1 {
+  transform: translateY(40px);
+  opacity: 0;
+  animation: fadeUp .5s forwards;
+  animation-delay: .3s;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade {
+  0% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes grow {
+  0% {
+    opacity: 0;
+    width: 0%;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+    width: 40%;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+    opacity: 0;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
 }

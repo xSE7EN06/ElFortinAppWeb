@@ -1,149 +1,117 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>El Fortin Panaderia</title>
-  <link rel="stylesheet" href="./landig-page.component.css">
-</head>
-<body>
-  <header class="header" id="header">
-    <span class="logo">El Fortin Panaderia</span>
-    <nav class="nav-links">
-      <a href="#inicio">INICIO</a>
-      <a href="#menu">MENU</a>
-      <a href="#promociones">PROMOCIONES</a>
-      <a href="#acerca-de-nosotros">ACERCA DE NOSOTROS</a>
-      <a href="#testimonios">TESTIMONIOS</a>
-      <a href="#contacto">CONTACTO</a>
-
-    </nav>
-  </header>
-
-  <section class="hero" id="inicio">
-    <div class="product-highlight">
-      <h2>Concha de Chocolate</h2>
-      <p>100% Chocolate<br>Concha Fresca</p>
-      <button class="cta">COMPRAR AHORA</button>
+<header>
+  <nav>
+    <h2><a href="#" id="logo">Panaderia El Fortin</a></h2>
+    <button class="nav-button fa fa-bars"></button>
+    <div>
+<!--     <ul> -->
+      <ul>
+        <button class="exit-menu fa fa-times"></button>
+        <li><a href="inicio" class="active">bienvenido</a></li>
+        <li><a href="inicio">menu</a></li>
+        <li><a href="inicio">reservations</a></li>
+        <li><a href="inicio">news</a></li>
+        <li><a href="inicio">contactanos</a></li>
+      </ul>
+<!--     </ul> -->
     </div>
-  </section>
+  </nav>
+  <div class="center">
+    <h1 class="alex-brush">Bienvenido</h1>
+    <h2>El Fortin</h2>
+    <span id="asterisk">*</span>
+    <p>listo para tí</p>
+  </div>
+</header>
 
-  <main>
-    <section class="menu" id="menu">
-      <h2>Algo De Nuestro Menú</h2>
-      <div class="menu-grid">
-        <div class="menu-card">
-          <img src="https://i.pinimg.com/736x/6a/e2/a9/6ae2a9fbe20ecd2f1b53cf883d4bcaeb.jpg" alt="Pan Dulce">
-          <div class="menu-content">
-            <h3>Pan Dulce</h3>
-            <p>Variedad de panes dulces tradicionales.</p>
-            <button class="cta">Ver Más</button>
-          </div>
-        </div>
-        <div class="menu-card">
-          <img src="https://i.pinimg.com/736x/f5/bf/50/f5bf509d3965ecc2773ca303535fe41b.jpg" alt="Pan Artesanal">
-          <div class="menu-content">
-            <h3>Pan Artesanal</h3>
-            <p>Pan hecho con ingredientes naturales y técnicas tradicionales.</p>
-            <button class="cta">Ver Más</button>
-          </div>
-        </div>
-        <div class="menu-card">
-          <img src="https://i.pinimg.com/736x/6a/e2/a9/6ae2a9fbe20ecd2f1b53cf883d4bcaeb.jpg" alt="Pasteles">
-          <div class="menu-content">
-            <h3>Pasteles</h3>
-            <p>Deliciosos pasteles para cualquier ocasión.</p>
-            <button class="cta">Ver Más</button>
-          </div>
-        </div>
-        <div class="menu-card">
-          <img src="https://i.pinimg.com/736x/f5/bf/50/f5bf509d3965ecc2773ca303535fe41b.jpg" alt="Café">
-          <div class="menu-content">
-            <h3>Café</h3>
-            <p>Café de alta calidad para acompañar tus panes.</p>
-            <button class="cta">Ver Más</button>
-          </div>
-        </div>
+<section class="add-padding add-flex">
+  <div class="center-text">
+    <h1 class="alex-brush"><span class="custom-font">Descubre</span><br />NUESTRA HISTORIA</h1>
+    <h2>*</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit aspernatur beatae laboriosam dicta tempora ab, dolorem mollitia perspiciatis, deleniti quidem dolor repellat animi. Quidem eligendi iste distinctio fugit maxime modi. Lorem ipsum dolor sit amet.</p>
+    <a href="#">sobre nosotros</a>
+  </div>
+  <div  class="stuffed-cherries" data-aos="fade-left" data-aos-delay="300">
+  </div>
+</section>
+
+<section class="bread-background center-h1">
+  <h1 class="custom-h1 alex-brush"><span class="custom-font">Recetas</span><br />DE BUEN GUSTO</h1>
+</section>
+
+<section class="menu add-flex add-padding">
+  <div class="menu-images">
+    <img src="https://i.pinimg.com/736x/0a/50/45/0a50457e3511e22ba3d698e567cdcaf9.jpg"  data-aos="fade-down" data-aos-delay="300"/>
+    <img src="https://i.pinimg.com/736x/50/f1/7c/50f17c380525acf16c5ad8df185b1554.jpg" data-aos="fade-left" data-aos-delay="300"/>
+    <img src="https://i.pinimg.com/736x/f9/b5/34/f9b534aca55b910ad86dfb9a707e7eb6.jpg" data-aos="fade-right" data-aos-delay="300"/>
+    <img src="https://i.pinimg.com/736x/87/4b/01/874b016b427e1f5323117b78402236db.jpg" data-aos="fade-up" data-aos-delay="300"/>
+  </div>
+  <div class="center-text">
+    <h1><span class="custom-font alex-brush">Descubre</span><br />NUESTRO MENU</h1>
+    <h2>*</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae distinctio possimus tempore voluptatem, quo repellendus quas culpa quasi, hic optio sapiente molestias necessitatibus, aliquam excepturi consequatur a voluptates quam beatae!</p>
+    <a href="#">Menu</a>
+  </div>
+</section>
+
+<section class="cake-background center-h1">
+  <h1 class="custom-h1"><span class="custom-font alex-brush">la mezcla</span><br />PERFECTA</h1>
+</section>
+
+<section class="add-flex reservation-section">
+  <div class="center-text add-padding">
+    <h1><span class="custom-font alex-brush">Delicias</span><br />CULINARIAS</h1>
+    <h2>*</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim animi odit in dignissimos neque ratione, laboriosam rerum! Deleniti accusamus non, aliquam tempora, mollitia laborum ad, fugiat at explicabo esse aut. Lorem ipsum dolor sit amet, adipisicing elit.</p>
+    <a href="#">Ordena</a>
+  </div>
+  <div>
+    <img src="https://i.pinimg.com/736x/0e/0a/ed/0e0aed1ad7a0e5ceb019ac96acaf93c9.jpg" data-aos="fade-up" data-aos-delay="300"/>
+    <img src="https://i.pinimg.com/736x/0a/50/45/0a50457e3511e22ba3d698e567cdcaf9.jpg" data-aos="fade-down" data-aos-delay="300"/>
+  </div>
+</section>
+
+<footer>
+  <button class="to-top"><i class="fa fa-chevron-up"></i>TOP</button>
+  
+  <div class="restaurant-info">
+  
+    <div class="locations">
+      <h4>UBICANOS</h4>
+      <div class="location-1">
+        <h5>Cordoba &#8212;<br />Avenida 1 &#8212;</h5>
+      </div><!--location-1-->
+      <div class="location-2">
+        <h5>Fortin de las flores<br />parque central</h5>
       </div>
-    </section>
+    </div><!--locations end-->
 
-    <section class="promociones" id="promociones">
-      <h2>Promociones del Mes</h2>
-      <div class="promo-grid">
-        <div class="promo-card">
-          <img src="https://i.pinimg.com/736x/6a/e2/a9/6ae2a9fbe20ecd2f1b53cf883d4bcaeb.jpg" alt="Promoción 1">
-          <div class="promo-content">
-            <h3>2x1 en Cafés</h3>
-            <p>Disfruta de nuestras conchas al 2x1 todos los martes.</p>
-          </div>
-        </div>
-        <div class="promo-card">
-          <img src="https://i.pinimg.com/736x/f5/bf/50/f5bf509d3965ecc2773ca303535fe41b.jpg" alt="Promoción 2">
-          <div class="promo-content">
-            <h3>Descuento en Pan Artesanal</h3>
-            <p>20% de descuento en pan artesanal los jueves.</p>
-          </div>
-        </div>
+    <div class="hours">
+      <h4>HORARIOS</h4>
+      <div class="weekdays">
+        <h5>Monday - Thursday<br />
+          5:30pm - 10:00pm
+        </h5>
+      </div><!--weekdays end-->
+      
+      <div class="weekends">
+        <h5>Friday & Saturday<br />
+          5:30pm - 11:00pm
+        </h5>
+      </div><!--weekends end-->
+      
+      <div class="private-events">
+        <h5>Available for private<br />
+          events on Sunday
+        </h5>
       </div>
-    </section>
-
-    <section class="about" id="acerca-de-nosotros">
-      <h2>Acerca de Nosotros</h2>
-      <p>Ofrecemos panes y dulces artesanales con recetas tradicionales y el toque de calidad de El Fortin Panaderia.</p>
-    </section>
-
-    <section class="testimonios" id="testimonios">
-      <h2>Testimonios</h2>
-      <div class="testimonio-grid">
-        <div class="testimonio-card">
-          <p>"El mejor pan que he probado en mi vida. ¡Totalmente recomendado!"</p>
-          <h3>- Juan Pérez</h3>
-        </div>
-        <div class="testimonio-card">
-          <p>"Increíble sabor y textura. Siempre fresco y delicioso."</p>
-          <h3>- María Gómez</h3>
-        </div>
-        <div class="testimonio-card">
-          <p>"El servicio es excelente y los precios son muy accesibles."</p>
-          <h3>- Carlos López</h3>
-        </div>
-      </div>
-    </section>
-
-    <section class="galeria">
-      <h2>Galería</h2>
-      <div class="galeria-grid">
-        <img src="https://i.pinimg.com/736x/6a/e2/a9/6ae2a9fbe20ecd2f1b53cf883d4bcaeb.jpg" alt="Imagen 1">
-        <img src="https://i.pinimg.com/736x/f5/bf/50/f5bf509d3965ecc2773ca303535fe41b.jpg" alt="Imagen 2">
-        <img src="https://i.pinimg.com/736x/6a/e2/a9/6ae2a9fbe20ecd2f1b53cf883d4bcaeb.jpg" alt="Imagen 3">
-        <img src="https://i.pinimg.com/736x/f5/bf/50/f5bf509d3965ecc2773ca303535fe41b.jpg" alt="Imagen 4">
-      </div>
-    </section>
-
-    <section class="contacto" id="contacto">
-      <h2>Contacto</h2>
-      <form class="contacto-form">
-        <input type="text" placeholder="Nombre" required>
-        <input type="email" placeholder="Correo Electrónico" required>
-        <textarea placeholder="Mensaje" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-
-    <section class="redes-sociales">
-      <h2>Síguenos en Redes Sociales</h2>
-      <div class="redes-grid">
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174848.png" alt="Facebook"></a>
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram"></a>
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 El Fortin Panaderia. Todos los derechos reservados.</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+      
+    </div><!--hours end-->
+    
+  </div><!--restaurant-info end-->
+  
+  <div class="copyright">
+    <p><small>Copyright 2014 &#169; Handcrafted with love by <span>PixelGrade</span> Team</small></p>
+    <p><small>Permissions and Copyright &#8226; Contact The Team</small></p>
+  </div>
+  
+</footer>
