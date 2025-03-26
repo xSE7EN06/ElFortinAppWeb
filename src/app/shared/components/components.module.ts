@@ -1,21 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatDialogModule } from '@angular/material/dialog';
-import { DialogComponent } from './dialog/dialog.component';
-import { DialogFormComponent } from './dialog-form/dialog-form.component';
+import { MaterialModule } from '../../material/material.module';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
-  declarations: [MatDialogModule,
-    DialogComponent,
-    DialogFormComponent
+  declarations: [ SpinnerComponent
   ],
   imports: [
     CommonModule,
-    MatDialogModule
+    MaterialModule
   ],
   exports:[
-    DialogComponent
-  ]
+   ]
 })
 export class ComponentsModule { }
