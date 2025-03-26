@@ -23,7 +23,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatButtonModule,
     MatCardModule,
     MatChipsModule,
-    MatDialogModule,
+    MatDialogModule, // Este módulo ya contiene MatDialogContent
     MatFormFieldModule,
     MatGridListModule,
     MatIconModule,

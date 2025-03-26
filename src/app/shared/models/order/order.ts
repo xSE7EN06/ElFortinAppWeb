@@ -1,5 +1,5 @@
 export interface Order {
-    id: string;
+    id: number;
     table_number: number;
     restaurant_id: string;
     order_date: string;

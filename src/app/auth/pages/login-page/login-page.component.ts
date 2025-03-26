@@ -15,44 +15,40 @@ export class LoginPageComponent {
   isLoading = false;
   constructor(private fb: FormBuilder, private route: Router, private authService: AuthService,private snackBar: MatSnackBar) {
     this.loginForm = this.fb.group({
-      userName: ['', [Validators.required]],
+      emailOrNickname: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
-  onSubmit(): void {
-    
-  }
 
   ngOnInit(){
-    localStorage.setItem('userPassword', 'angel');
-    localStorage.setItem('userPassword', '123456789');
-    
+
 }
   
-login() {
-  const { userName, password } = this.loginForm.value;
+ // Función para manejar el login
+ onLogin(): void {
+  const { emailOrNickname, password } = this.loginForm.value; // Extrae 'emailOrNickname' y 'password'
 
   if (this.loginForm.valid) {
-    this.isLoading = true; // Activar loader
-
-    setTimeout(() => {  // Simula un tiempo de espera (reemplázalo con la petición real)
-      if (this.authService.login(password, userName)) {
-        this.snackBar.open('✅ Login exitoso', 'Cerrar', { duration: 3000 });
-        this.route.navigate(['/admin']);
-      } else {
-        this.snackBar.open('❌ Credenciales incorrectas', 'Cerrar', { duration: 3000 });
-      }
-
-      this.isLoading = false; // Ocultar loader después del proceso
-    }, 2000);
-    
+    this.authService.login(emailOrNickname, password).subscribe({
+      next: (response) => {
+        if (response.token) {
+          // Si la API devuelve un token, lo almacenamos
+          this.authService.storeToken(response.token);
+          this.snackBar.open('✅ Login exitoso', 'Cerrar', { duration: 3000 });
+          this.route.navigate(['/admin']); // Redirigir al usuario
+          
+        } else {
+          this.snackBar.open('❌ Credenciales invállidas', 'Cerrar', { duration: 3000 });
+        }
+      },
+      error: (error) => {
+        this.snackBar.open(`❌ Credenciales inválidas`, 'Cerrar', { duration: 3000 });
+      },
+    });
   } else {
     this.snackBar.open('⚠️ Completa todos los campos', 'Cerrar', { duration: 3000 });
-    this.loginForm.markAllAsTouched();
   }
 }
-  
-  
 
   register(){
     this.route.navigate(['/auth/register']);

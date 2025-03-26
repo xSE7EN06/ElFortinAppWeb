@@ -1,0 +1,16 @@
+.button-add {
+    position: absolute; /* Posiciona el botón de manera absoluta */
+    top: -50px; /* Distancia desde la parte superior */
+    left: 60px; /* Distancia desde la izquierda */
+    z-index: 10; /* Asegura que el botón esté sobre la tabla */
+    color: #4bb072; /* Color del ícono */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+    border-radius: 50%; /* Hace el botón circular */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: rgba(255, 255, 255, 1); /* Fondo más sólido al hacer hover */
+    }
+  }
+  

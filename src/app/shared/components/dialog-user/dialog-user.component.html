@@ -1,0 +1,66 @@
+<h2 mat-dialog-title>{{ usuarioForm.value.id ? 'Editar Usuario' : 'Agregar Usuario' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="usuarioForm">
+    <!-- Nombre -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" required>
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" required>
+    </mat-form-field>
+
+     <!-- Teléfono -->
+     <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Teléfono</mat-label>
+      <input matInput formControlName="phone" type="number" required>
+    </mat-form-field>
+    
+
+    <!-- Rol -->
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="user_type" required>
+          <mat-option value="admin">Administrador</mat-option>
+          <mat-option value="worker">Trabajador</mat-option>
+          <mat-option value="client">Cliente</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+          <!-- NickName -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nombre de usuario</mat-label>
+      <input matInput formControlName="nickname" required>
+    </mat-form-field>
+
+    <!-- Contraseña -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="encrypted_password" type="password" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Confirmar contraseña</mat-label>
+      <input matInput formControlName="confirm_password" type="password">
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  
+  <button *ngIf="usuarioForm.value.id" mat-button class="cancel-button" (click)="togglePasswordField()">
+    <mat-icon aria-hidden="false" aria-label="Toggle password visibility" [fontIcon]="updatePassword ? 'visibility_off' : 'visibility'"></mat-icon>
+  </button>
+
+ 
+  <button mat-button class="cancel-button" (click)="onNoClick()">Cancelar</button>
+  
+  <button mat-raised-button color="primary" class="confirm-button" (click)="onConfirm()" [disabled]="usuarioForm.invalid">
+    {{ usuarioForm.value.id ? 'Actualizar' : 'Agregar' }}
+  </button>
+</mat-dialog-actions>

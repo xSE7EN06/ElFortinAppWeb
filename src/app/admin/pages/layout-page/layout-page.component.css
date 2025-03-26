@@ -1,0 +1,15 @@
+.button-add {
+    mat-icon{
+        display: flex;
+        align-items: center;
+        color:green;
+    }
+}
+
+.button-exit{
+    display: block;  /* Asegúrate de que el botón sea un bloque */
+    margin-left: auto;  /* Esto empuja el botón hacia la derecha */
+    margin-right: 0;  /* Opcional: si deseas asegurarte de que no tenga margen a la derecha */
+  
+}
+  

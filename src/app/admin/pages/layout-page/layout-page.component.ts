@@ -19,11 +19,15 @@ export class LayoutPageComponent {
     
   ]
 
+
+
   constructor(private router: Router,private authService: AuthService){}
 
   exit(){
     this.router.navigate(['/auth']);
     this.authService.logout(); 
   }
+
+  
 
 }
