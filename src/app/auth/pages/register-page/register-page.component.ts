@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service'; 
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from '../../../shared/models/user/user';
 
 @Component({
   selector: 'app-register-page',
@@ -10,45 +12,68 @@ import { AuthService } from '../../../services/auth/auth.service';
   standalone: false
 })
 export class RegisterPageComponent {
-  isLinear = false; // Controla si el stepper es lineal o no
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  isLinear = true; // Stepper lineal (no se puede saltar pasos)
+  firstFormGroup: FormGroup; // Formulario para datos personales
+  secondFormGroup: FormGroup; // Formulario para datos de usuario
 
-  constructor(private _formBuilder: FormBuilder, private route: Router, private authService: AuthService) {
-    this.firstFormGroup = this._formBuilder.group({
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) {
+    // Inicializar el primer formulario (datos personales)
+    this.firstFormGroup = this.fb.group({
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required]
+      lastName: ['', Validators.required],
+      maternalLastName: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
+      email: ['', [Validators.required, Validators.email]],
     });
-    this.secondFormGroup = this._formBuilder.group({
+
+    // Inicializar el segundo formulario (datos de usuario)
+    this.secondFormGroup = this.fb.group({
       userName: ['', Validators.required],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required]
-    });
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required],
+    }, { validator: this.passwordMatchValidator }); // Validador personalizado
   }
 
-  ngOnInit() {
+  // Validador personalizado para confirmar contraseña
+  passwordMatchValidator(formGroup: FormGroup) {
+    const password = formGroup.get('password')?.value;
+    const confirmPassword = formGroup.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { mismatch: true };
   }
 
-  // Opcional: Método para registrar los datos o manejar el final del stepper
-  register() {
-    if (this.firstFormGroup.valid && this.secondFormGroup.valid) {
-      const userData = this.secondFormGroup.value;
+// Función para registrar al usuario
+register(): void {
+  if (this.firstFormGroup.valid && this.secondFormGroup.valid) {
+    const personalData = this.firstFormGroup.value;
+    const userData = this.secondFormGroup.value;
 
-      // Llamamos al servicio para registrar al usuario
-      this.authService.register(userData);
-      
-      console.log('Registro exitoso:', userData);
-     
+    const name = `${personalData.firstName} ${personalData.lastName} ${personalData.maternalLastName}`;
+    const email = personalData.email;
+    const phone = personalData.phone;
+    const userType = 'client'; // Valor por defecto
+    const nickname = userData.userName;
+    const password = userData.password;
+    const image = 'default-image-url'; // Puedes cambiarlo según tu lógica
 
-      // Redirigir después del registro
-      this.finish();
-    } else {
-      console.log('Form is not completely valid');
-    }
-  }
-
-  finish(){
-    this.route.navigate(['/auth/login']);
+    this.authService
+      .register(name, email, phone, userType, nickname, password, image)
+      .subscribe({
+        next: (response) => {
+          this.snackBar.open('✅ Registro exitoso', 'Cerrar', { duration: 3000 });
+          this.router.navigate(['/auth/login']); // Redirigir al usuario al login
+        },
+        error: (error) => {
+          console.error('Error en el registro:', error);
+          this.snackBar.open(`❌ Error en el registro`, 'Cerrar', { duration: 3000 });
+        },
+      });
+  } else {
+    this.snackBar.open('⚠️ Completa todos los campos correctamente', 'Cerrar', { duration: 3000 });
   }
 }
-
+}

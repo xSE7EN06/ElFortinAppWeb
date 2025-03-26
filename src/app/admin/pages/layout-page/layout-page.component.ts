@@ -11,8 +11,15 @@ export class LayoutPageComponent {
   public sidebarItems = [
     {label: 'Usuarios', icon: 'group', url: './users'},
     {label: 'Productos', icon:'inventory', url: 'products'},
-    {label: 'Ordenes', icon: 'receipt', url: 'order'}
+    {label: 'Ordenes', icon: 'receipt', url: 'order'},
+    {label: 'Ventas', icon: 'paid', url: 'sales'},
+    {label: 'Restaurantes', icon: 'restaurant', url: 'restaurants'},
+    {label: 'Proveedores', icon: 'groups', url: 'providers'},
+    {label: 'Promociones', icon: 'savings', url: 'promotions'}
+    
   ]
+
+
 
   constructor(private router: Router,private authService: AuthService){}
 
@@ -20,5 +27,7 @@ export class LayoutPageComponent {
     this.router.navigate(['/auth']);
     this.authService.logout(); 
   }
+
+  
 
 }

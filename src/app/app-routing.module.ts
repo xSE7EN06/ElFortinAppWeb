@@ -4,29 +4,29 @@ import { Error404PageComponent } from './shared/pages/error404-page/error404-pag
 
 const routes: Routes = [
   {
-    path: 'auth', //Ruta padre para autenticacion
+    path: 'inicio', // Ruta padre para landing-page
+    loadChildren: () => import('./landig-page/landing-page.module').then(m => m.LandingPageModule), // Lazy loading para cargar el módulo de landing-page solo cuando se accede a 'inicio'
+  },
+  {
+    path: 'auth', // Ruta padre para autenticación
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
-
   {
-    path: 'admin', //Ruta padre para heroes
+    path: 'admin', // Ruta padre para administración
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-    //lazy loading carfa el modulo de autenticacion solo cuando se accede a heroes
   },
-  
   {
     path: '404',
     component: Error404PageComponent,
   },
-
   {
-    path: '', //Ruta padre(inicial) para cualquier otra ruta
-    redirectTo: '/auth/login', //Redirecciona a la ruta login
-    pathMatch: 'full', //Solo se redirecciona si la ruta es exactamente vacia
+    path: '', // Ruta inicial
+    redirectTo: '/auth/login', // Redirecciona a la ruta de login
+    pathMatch: 'full', // Solo se redirecciona si la ruta es exactamente vacía
   },
   {
-    path: '**', //Ruta comodin,se usa cuando ninguna de las rutas anteriores coincide
-    redirectTo: '404', //Redirecciona a la ruta 404
+    path: '**', // Ruta comodín, se usa cuando ninguna de las rutas anteriores coincide
+    redirectTo: '404', // Redirecciona a la ruta 404
   }
 ];
 

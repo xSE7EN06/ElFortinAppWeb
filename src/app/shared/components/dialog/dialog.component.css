@@ -1,0 +1,49 @@
+/* Estilo para el título del diálogo */
+.dialog-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3f51b5; /* Color primario de Angular Material */
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  /* Estilo para el contenido del diálogo */
+  .dialog-content {
+    font-size: 1rem;
+    color: #616161; /* Color de texto secundario */
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Estilo para las acciones del diálogo */
+  .dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem; /* Espacio entre botones */
+    padding: 1rem 0;
+    padding-right: 15px;
+  }
+  
+  /* Estilo para el botón de cancelar */
+  .cancel-button {
+    background-color: #f5f5f5; /* Fondo gris claro */
+    color: #757575; /* Color de texto gris */
+    border: 1px solid #e0e0e0; /* Borde sutil */
+  }
+  
+  /* Estilo para el botón de confirmar */
+  .confirm-button {
+    background-color: #f44336; /* Rojo para acciones críticas */
+    color: white;
+  }
+  
+  /* Estilo para el botón OK */
+  .ok-button {
+    background-color: #3f51b5; /* Azul primario */
+    color: white;
+  }
+  
+  /* Efecto hover para los botones */
+  button:hover {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+  }
