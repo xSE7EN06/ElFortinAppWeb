@@ -4,6 +4,7 @@ import { ProvidersService } from '../../../services/providers/providers.service'
 import { DialogComponent } from '../../../shared/components/dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogProviderComponent } from '../../../shared/components/dialog-provider/dialog-provider.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-provider-page',
@@ -13,7 +14,10 @@ import { DialogProviderComponent } from '../../../shared/components/dialog-provi
 export class ProviderPageComponent {
   displayedColumns: string[] = ['id', 'name', 'contact_info', 'actions'];
   providers : Provider[]=[];
- 
+  dataSource = new MatTableDataSource<Provider>(this.providers);
+   searchValue = '';
+   totalItems = 0;
+   pageSize = 10;
  constructor(private providerService:ProvidersService, private dialog: MatDialog){}
 
   ngOnInit(){
@@ -30,7 +34,22 @@ export class ProviderPageComponent {
       }
     )
   }
+  // Función para aplicar filtro de búsqueda
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.searchValue = filterValue.trim().toLowerCase();
+    this.dataSource.filter = this.searchValue;
+    
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
+  // Función para limpiar búsqueda
+  clearSearch() {
+    this.searchValue = '';
+    this.dataSource.filter = '';
+  }
   // Método para eliminar un proveedor
     delete(provider: Provider) {
       

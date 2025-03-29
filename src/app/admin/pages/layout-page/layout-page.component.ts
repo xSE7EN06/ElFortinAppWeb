@@ -13,7 +13,6 @@ export class LayoutPageComponent {
     {label: 'Productos', icon:'inventory', url: 'products'},
     {label: 'Ordenes', icon: 'receipt', url: 'order'},
     {label: 'Ventas', icon: 'paid', url: 'sales'},
-    {label: 'Restaurantes', icon: 'restaurant', url: 'restaurants'},
     {label: 'Proveedores', icon: 'groups', url: 'providers'},
     {label: 'Promociones', icon: 'savings', url: 'promotions'}
     

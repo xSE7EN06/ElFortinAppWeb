@@ -7,7 +7,18 @@
     </button>
   </div>
 
-  <table mat-table [dataSource]="Users" class="mat-elevation-z8">
+  <div class="search-bar">
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Buscar usuarios</mat-label>
+      <input matInput placeholder="Buscar..." (keyup)="applyFilter($event)">
+      <mat-icon matPrefix>search</mat-icon>
+      <button mat-icon-button matSuffix *ngIf="searchValue" (click)="clearSearch()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- ID Column -->
     <ng-container matColumnDef="id">

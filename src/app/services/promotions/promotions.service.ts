@@ -26,4 +26,17 @@ export class PromotionsService {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
+   deletePromotion(id: string):Observable<any>{
+      return this.http.delete(`${this.apiUrl}/${id}`);
+    } 
+  
+    addPromotion(promotion: Promotion):Observable<Promotion>{
+      return this.http.post<Promotion>(`${this.apiUrl}`, promotion);
+    }
+  
+    updatePromotion(promotion:Promotion):Observable<Promotion>{
+    if(!promotion.id) throw Error('Promotion ID is required');
+    return this.http.put<Promotion>(`${this.apiUrl}/${promotion.id}`, promotion);
+    }
+
 }

@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Editar Promocion' : 'Nueva Promocion' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="promotionForm">
+
+    <!-- Code -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Codigo</mat-label>
+      <input matInput formControlName="code" required>
+    </mat-form-field>
+
+    <!-- Descripcion -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Descripcion</mat-label>
+      <textarea matInput formControlName="description" rows="3"></textarea>
+    </mat-form-field>
+
+        <!-- discount_type -->
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Tipo de descuento</mat-label>
+            <input matInput formControlName="discount_type" required>
+          </mat-form-field>
+
+              <!-- Value -->
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Valor</mat-label>
+        <input matInput formControlName="value" required>
+      </mat-form-field>
+
+          <!-- start_date -->
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Fecha inicial</mat-label>
+        <input matInput formControlName="start_date" required>
+      </mat-form-field>
+
+          <!-- start_date  -->
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Fecha final</mat-label>
+        <input matInput formControlName="end_date" required>
+      </mat-form-field>
+
+          <!-- Activate -->
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Estado</mat-label>
+        <input matInput formControlName="active" required>
+      </mat-form-field>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onConfirm()">
+    {{ isEditMode ? 'Actualizar' : 'Crear' }}
+  </button>
+</mat-dialog-actions>

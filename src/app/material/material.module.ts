@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -42,6 +42,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatTableModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatPaginatorModule,
   ]
 })
 export class MaterialModule { }

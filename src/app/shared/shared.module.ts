@@ -8,6 +8,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DialogProductComponent } from './components/dialog-product/dialog-product.component';
 import { DialogOrderComponent } from './components/dialog-order/dialog-order.component';
 import {DialogProviderComponent} from './components/dialog-provider/dialog-provider.component'
+import { DialogPromotionComponent } from './components/dialog-promotion/dialog-promotion.component';
+
+
+
 @NgModule({
   declarations: [
     Error404PageComponent,
@@ -15,7 +19,8 @@ import {DialogProviderComponent} from './components/dialog-provider/dialog-provi
     DialogUserComponent,
     DialogProductComponent,
     DialogOrderComponent,
-    DialogProviderComponent
+    DialogProviderComponent,
+    DialogPromotionComponent
   ],
   imports: [
     CommonModule,
@@ -30,6 +35,7 @@ import {DialogProviderComponent} from './components/dialog-provider/dialog-provi
     DialogProductComponent,
     DialogOrderComponent,
     DialogProviderComponent,
+    DialogPromotionComponent,
   ]
 })
 export class SharedModule { }
