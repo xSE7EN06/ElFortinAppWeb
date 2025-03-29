@@ -1,5 +1,11 @@
-<div class="mat-elevation-z8">
-    <table mat-table [dataSource]="providers" class="mat-elevation-z8">
+<div class="container">
+  <div class="header">
+    <h1>Gestión de Proveedores</h1>
+    <button mat-raised-button color="primary" (click)="add()">
+      <mat-icon>add</mat-icon>
+      Nuevo Producto
+    </button>
+  </div><table mat-table [dataSource]="providers" class="mat-elevation-z8">
     
       <!-- ID Column -->
       <ng-container matColumnDef="id">
