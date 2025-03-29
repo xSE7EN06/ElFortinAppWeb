@@ -4,11 +4,20 @@ import { Error404PageComponent } from './shared/pages/error404-page/error404-pag
 
 const routes: Routes = [
   {
+<<<<<<< Updated upstream
     path: 'inicio', // Ruta padre para landing-page
     loadChildren: () => import('./landig-page/landing-page.module').then(m => m.LandingPageModule), // Lazy loading para cargar el módulo de landing-page solo cuando se accede a 'inicio'
   },
   {
     path: 'auth', // Ruta padre para autenticación
+=======
+    path: 'home', //Ruta padre para heroes
+    loadChildren: () => import('./landig-page/landing-page.module').then(m => m.LandingPageModule), //lazy loading carga el modulo de heroes solo cuando se accede a heroes
+  },
+
+  {
+    path: 'auth', //Ruta padre para autenticacion
+>>>>>>> Stashed changes
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
   {

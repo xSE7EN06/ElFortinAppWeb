@@ -4,7 +4,11 @@ import * as AOS from 'aos'; // Import AOS library
 @Component({
   selector: 'app-landig-page',
   templateUrl: './landig-page.component.html',
+<<<<<<< Updated upstream
   styleUrls: ['./landig-page.component.scss']
+=======
+  styleUrls: ['./landig-page.component.css']
+>>>>>>> Stashed changes
 })
 export class LandigPageComponent implements OnInit {
 
