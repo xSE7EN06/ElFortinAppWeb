@@ -1,62 +1,95 @@
-<h2 mat-dialog-title>{{ isEditMode ? 'Editar Producto' : 'Nuevo Producto' }}</h2>
+<h2 mat-dialog-title class="dialog-title">
+  <mat-icon class="title-icon">{{ isEditMode ? 'edit' : 'add_circle' }}</mat-icon>
+  {{ isEditMode ? 'Editar Producto' : 'Nuevo Producto' }}
+</h2>
 
-<mat-dialog-content>
-  <form [formGroup]="productForm">
+<mat-dialog-content class="dialog-content">
+  <form [formGroup]="productForm" class="product-form">
     <!-- Nombre -->
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Nombre del Producto</mat-label>
       <input matInput formControlName="name" required>
+      <mat-icon matPrefix>local_dining</mat-icon>
       <mat-error *ngIf="productForm.get('name')?.hasError('required')">
         El nombre es requerido
       </mat-error>
     </mat-form-field>
 
     <!-- Descripción -->
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Descripción</mat-label>
       <textarea matInput formControlName="description" rows="3"></textarea>
+      <mat-icon matPrefix>description</mat-icon>
     </mat-form-field>
 
-    <!-- Precio -->
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Precio de venta</mat-label>
-      <input matInput formControlName="price" type="number" step="0.01" required>
-      <mat-error *ngIf="productForm.get('price')?.hasError('required')">
-        El precio es requerido
-      </mat-error>
-    </mat-form-field>
+    <!-- Precio y Categoría en fila -->
+    <div class="row-fields">
+      <!-- Precio -->
+      <mat-form-field appearance="outline">
+        <mat-label>Precio de venta</mat-label>
+        <input matInput formControlName="price" type="number" step="0.01" required>
+        <span matPrefix>$&nbsp;</span>
+        <mat-icon matSuffix>attach_money</mat-icon>
+        <mat-error *ngIf="productForm.get('price')?.hasError('required')">
+          El precio es requerido
+        </mat-error>
+      </mat-form-field>
 
-   <!-- Categoría -->
-<mat-form-field appearance="fill" class="full-width">
-    <mat-label>Categoría</mat-label>
-    <mat-select formControlName="category_name" required>
-      <mat-option value="Bebidas">Bebidas</mat-option>
-      <mat-option value="Restaurante">Restaurante</mat-option>
-      <mat-option value="Panaderia">Panadería</mat-option>
-    </mat-select>
-    <mat-error *ngIf="productForm.get('categoryName')?.hasError('required')">
-      La categoría es requerida
-    </mat-error>
-  </mat-form-field>
-  
-  <!-- Costos -->
-  <div class="cost-section">
-    <mat-form-field appearance="fill">
-      <mat-label>Costo pre-impuestos</mat-label>
-      <input matInput formControlName="pre_tax_cost" type="number" step="1">
-    </mat-form-field>
-  
-    <mat-form-field appearance="fill">
-      <mat-label>Costo post-impuestos</mat-label>
-      <input matInput formControlName="post_tax_cost" type="number" step="1">
-    </mat-form-field>
-  </div>
+      <!-- Categoría -->
+      <mat-form-field appearance="outline">
+        <mat-label>Categoría</mat-label>
+        <mat-select formControlName="category_name" required>
+          <mat-option value="Bebidas">
+            <div class="category-option">
+              <mat-icon>local_bar</mat-icon>
+              <span>Bebidas</span>
+            </div>
+          </mat-option>
+          <mat-option value="Restaurante">
+            <div class="category-option">
+              <mat-icon>restaurant</mat-icon>
+              <span>Restaurante</span>
+            </div>
+          </mat-option>
+          <mat-option value="Panaderia">
+            <div class="category-option">
+              <mat-icon>bakery_dining</mat-icon>
+              <span>Panadería</span>
+            </div>
+          </mat-option>
+        </mat-select>
+        <mat-icon matPrefix>category</mat-icon>
+        <mat-error *ngIf="productForm.get('category_name')?.hasError('required')">
+          La categoría es requerida
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Costos -->
+    <div class="cost-section">
+      <mat-form-field appearance="outline">
+        <mat-label>Costo pre-impuestos</mat-label>
+        <input matInput formControlName="pre_tax_cost" type="number" step="0.01">
+        <span matPrefix>$&nbsp;</span>
+        <mat-icon matSuffix>receipt</mat-icon>
+      </mat-form-field>
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Costo post-impuestos</mat-label>
+        <input matInput formControlName="post_tax_cost" type="number" step="0.01">
+        <span matPrefix>$&nbsp;</span>
+        <mat-icon matSuffix>receipt_long</mat-icon>
+      </mat-form-field>
+    </div>
   </form>
 </mat-dialog-content>
 
-<mat-dialog-actions align="end">
-  <button mat-button (click)="onNoClick()">Cancelar</button>
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-stroked-button color="warn" (click)="onNoClick()">
+    <mat-icon>cancel</mat-icon> Cancelar
+  </button>
   <button mat-raised-button color="primary" (click)="onConfirm()">
+    <mat-icon>{{ isEditMode ? 'save' : 'add' }}</mat-icon>
     {{ isEditMode ? 'Actualizar' : 'Crear' }}
   </button>
 </mat-dialog-actions>

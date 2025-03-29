@@ -1,49 +1,89 @@
-/* Estilo para el título del diálogo */
+/* Estilos con temática de panadería */
 .dialog-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #3f51b5; /* Color primario de Angular Material */
-    text-align: center;
-    margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 24px;
+  margin: 0;
+  background-color: #FFF8F0;
+  border-bottom: 1px solid #D2B48C;
+  color: #5C3A21;
+  font-family: 'Comfortaa', cursive;
+  text-align: center;
+}
+
+.dialog-title .title-icon {
+  margin-right: 12px;
+  color: #8B4513;
+}
+
+.dialog-content-container {
+  padding: 20px 24px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background-color: #FFF5E6;
+}
+
+.dialog-content {
+  padding: 16px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.dialog-content .message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  text-align: center;
+}
+
+.dialog-content .message-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  color: #8B4513;
+}
+
+.dialog-content .message-text {
+  color: #5C3A21;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.dialog-actions {
+  padding: 16px 24px;
+  background-color: #FFF8F0;
+  border-top: 1px solid #D2B48C;
+}
+
+.dialog-actions button {
+  margin: 0 8px;
+  border-radius: 20px;
+  padding: 0 20px;
+  font-weight: 500;
+  min-width: 120px;
+}
+
+.dialog-actions button mat-icon {
+  margin-right: 8px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .dialog-content-container {
+    padding: 16px;
   }
   
-  /* Estilo para el contenido del diálogo */
-  .dialog-content {
-    font-size: 1rem;
-    color: #616161; /* Color de texto secundario */
-    margin-bottom: 1.5rem;
+  .dialog-title, .dialog-actions {
+    padding: 12px 16px;
   }
   
-  /* Estilo para las acciones del diálogo */
-  .dialog-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem; /* Espacio entre botones */
-    padding: 1rem 0;
-    padding-right: 15px;
+  .dialog-content .message-icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
   }
-  
-  /* Estilo para el botón de cancelar */
-  .cancel-button {
-    background-color: #f5f5f5; /* Fondo gris claro */
-    color: #757575; /* Color de texto gris */
-    border: 1px solid #e0e0e0; /* Borde sutil */
-  }
-  
-  /* Estilo para el botón de confirmar */
-  .confirm-button {
-    background-color: #f44336; /* Rojo para acciones críticas */
-    color: white;
-  }
-  
-  /* Estilo para el botón OK */
-  .ok-button {
-    background-color: #3f51b5; /* Azul primario */
-    color: white;
-  }
-  
-  /* Efecto hover para los botones */
-  button:hover {
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
-  }
+}

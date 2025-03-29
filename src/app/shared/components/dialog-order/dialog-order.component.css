@@ -1,0 +1,95 @@
+/* Estilos con temática de panadería */
+.dialog-title {
+    color: #5C3A21; /* Café oscuro */
+    font-family: 'Comfortaa', cursive;
+    padding: 16px 24px;
+    margin: 0;
+    background-color: #FFF8F0; /* Fondo crema */
+    border-bottom: 1px solid #D2B48C; /* Borde café claro */
+  }
+  
+  .dialog-content {
+    padding: 20px 24px;
+    background-color: #FFF5E6; /* Fondo crema más claro */
+    
+    .order-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .amounts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    
+    mat-form-field {
+      margin-bottom: 8px;
+    }
+  }
+  
+  /* Estilos para campos */
+  mat-form-field {
+    .mat-form-field-outline {
+      color: #D2B48C; /* Café claro */
+    }
+    
+    .mat-form-field-label {
+      color: #8B4513; /* Café oscuro */
+    }
+    
+    .mat-input-element {
+      color: #5C3A21; /* Café más oscuro */
+    }
+    
+    mat-icon {
+      color: #8B4513; /* Café oscuro */
+      margin-right: 8px;
+    }
+  }
+  
+  /* Opciones de pago */
+  .payment-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    mat-icon {
+      font-size: 20px;
+      height: 20px;
+      width: 20px;
+    }
+  }
+  
+  /* Estados con colores */
+  .status-pending { color: #FF9800; } /* Naranja */
+  .status-waiting { color: #2196F3; } /* Azul */
+  .status-ready { color: #4CAF50; } /* Verde */
+  .status-delivered { color: #673AB7; } /* Morado */
+  .status-cancelled { color: #F44336; } /* Rojo */
+  
+  /* Acciones del diálogo */
+  .dialog-actions {
+    padding: 16px 24px;
+    background-color: #FFF8F0; /* Fondo crema */
+    border-top: 1px solid #D2B48C; /* Borde café claro */
+    
+    button {
+      margin-left: 8px;
+      border-radius: 20px;
+      padding: 0 16px;
+      font-weight: 500;
+      
+      mat-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+  
+  /* Tipografía */
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&display=swap');

@@ -1,0 +1,113 @@
+/* Estilos con temática de panadería */
+.dialog-title {
+    display: flex;
+    align-items: center;
+    padding: 18px 24px;
+    margin: 0;
+    background-color: #FFF8F0;
+    border-bottom: 1px solid #D2B48C;
+    color: #5C3A21;
+    font-family: 'Comfortaa', cursive;
+    
+    .title-icon {
+      margin-right: 12px;
+      color: #8B4513;
+    }
+  }
+  
+  .dialog-content-container {
+    padding: 0 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  
+  .dialog-content {
+    padding: 16px 8px;
+    background-color: #FFF5E6;
+    
+    .user-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .password-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+  }
+  
+  /* Estilos para campos */
+  mat-form-field {
+    .mat-form-field-outline {
+      color: #D2B48C;
+    }
+    
+    .mat-form-field-label {
+      color: #8B4513;
+    }
+    
+    .mat-input-element {
+      color: #5C3A21;
+    }
+    
+    mat-icon {
+      color: #8B4513;
+      margin-right: 8px;
+    }
+  }
+  
+  .role-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  /* Acciones del diálogo */
+  .dialog-actions {
+    padding: 16px 24px;
+    background-color: #FFF8F0;
+    border-top: 1px solid #D2B48C;
+    
+    button {
+      margin-left: 12px;
+      border-radius: 20px;
+      padding: 0 20px;
+      font-weight: 500;
+      min-width: 120px;
+      
+      mat-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+  
+  /* Tipografía */
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&display=swap');
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .dialog-content-container {
+      padding: 0 12px;
+    }
+    
+    .dialog-title, .dialog-actions {
+      padding: 14px 16px;
+    }
+    
+    .password-section {
+      gap: 12px;
+    }
+  }

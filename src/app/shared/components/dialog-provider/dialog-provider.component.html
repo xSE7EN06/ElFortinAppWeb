@@ -1,23 +1,38 @@
-<h2 mat-dialog-title>{{ isEditMode ? 'Editar Proveedor' : 'Nuevo Proveedor' }}</h2>
+<h2 mat-dialog-title class="dialog-title">
+  <mat-icon class="title-icon">{{ isEditMode ? 'edit' : 'local_shipping' }}</mat-icon>
+  {{ isEditMode ? 'Editar Proveedor' : 'Nuevo Proveedor' }}
+</h2>
 
-<mat-dialog-content>
-  <form [formGroup]="providerForm">
-
+<mat-dialog-content class="dialog-content">
+  <form [formGroup]="providerForm" class="provider-form">
     <!-- Nombre -->
-    <mat-form-field appearance="fill" class="full-width">
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Nombre del Proveedor</mat-label>
       <input matInput formControlName="name" required>
+      <mat-icon matPrefix>business</mat-icon>
+      <mat-error *ngIf="providerForm.get('name')?.hasError('required')">
+        El nombre es requerido
+      </mat-error>
     </mat-form-field>
 
-    <!-- Info de contacto -->
-    <mat-form-field appearance="fill" class="full-width">
+    <!-- Información de contacto -->
+    <mat-form-field appearance="outline" class="full-width">
       <mat-label>Información de contacto</mat-label>
-      <textarea matInput formControlName="contact_info" rows="3"></textarea>
+      <textarea matInput formControlName="contact_info" rows="4"></textarea>
+      <mat-icon matPrefix>contact_page</mat-icon>
+      <mat-hint>Teléfono, email, persona de contacto, etc.</mat-hint>
     </mat-form-field>
 
-<mat-dialog-actions align="end">
-  <button mat-button (click)="onNoClick()">Cancelar</button>
+  
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-stroked-button color="warn" (click)="onNoClick()">
+    <mat-icon>cancel</mat-icon> Cancelar
+  </button>
   <button mat-raised-button color="primary" (click)="onConfirm()">
+    <mat-icon>{{ isEditMode ? 'save' : 'add' }}</mat-icon>
     {{ isEditMode ? 'Actualizar' : 'Crear' }}
   </button>
 </mat-dialog-actions>

@@ -134,7 +134,7 @@ export class SalePageComponent {
                       if (result) {
                         const nuevaVenta: Sale = {
                           id: "",
-                          restaurant_id: "1",
+                          restaurant_id: result.restaurant_id,
                           report_date: result.report_date,
                           total_sales: result.total_sales,
                           

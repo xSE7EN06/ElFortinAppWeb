@@ -1,0 +1,101 @@
+/* Estilos con temática de panadería */
+.dialog-title {
+    display: flex;
+    align-items: center;
+    padding: 18px 24px 14px;
+    margin: 0;
+    background-color: #FFF8F0;
+    border-bottom: 1px solid #D2B48C;
+    color: #5C3A21;
+    font-family: 'Comfortaa', cursive;
+    
+    .title-icon {
+      margin-right: 12px;
+      color: #8B4513;
+    }
+  }
+  
+  .dialog-content-container {
+    padding: 0 20px;
+    max-height: 65vh;
+    overflow-y: auto;
+  }
+  
+  .dialog-content {
+    padding: 12px 8px;
+    background-color: #FFF5E6;
+    
+    .sale-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  /* Estilos para campos */
+  mat-form-field {
+    .mat-form-field-outline {
+      color: #D2B48C;
+    }
+    
+    .mat-form-field-label {
+      color: #8B4513;
+    }
+    
+    .mat-input-element {
+      color: #5C3A21;
+    }
+    
+    mat-icon {
+      color: #8B4513;
+      margin-right: 8px;
+    }
+  }
+  
+  .restaurant-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  /* Acciones del diálogo */
+  .dialog-actions {
+    padding: 16px 24px;
+    background-color: #FFF8F0;
+    border-top: 1px solid #D2B48C;
+    
+    button {
+      margin-left: 12px;
+      border-radius: 20px;
+      padding: 0 20px;
+      font-weight: 500;
+      
+      mat-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+  
+  /* Tipografía */
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&display=swap');
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .dialog-content-container {
+      padding: 0 12px;
+    }
+    
+    .dialog-title, .dialog-actions {
+      padding: 14px 16px;
+    }
+  }
