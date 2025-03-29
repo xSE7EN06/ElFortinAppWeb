@@ -36,7 +36,7 @@ export class UsersPageComponent {
    delete(user: User) {
     
     // Mostrar el diálogo de confirmación
-    this.mostrarDialog(
+    this.showDialog(
       '¿Estás seguro de borrar este usuario?',
       `Se eliminará a ${user.nickname} permanentemente.`,
       'Eliminar'
@@ -45,7 +45,7 @@ export class UsersPageComponent {
         // Si el usuario confirma, llamar al servicio para eliminar
         this.usuarioService.deleteUser(user.id).subscribe({
           next: () => {
-            this.mostrarDialog(
+            this.showDialog(
               'Usuario Eliminado',
               'El usuario fue eliminado satisfactoriamente',
               null
@@ -53,7 +53,7 @@ export class UsersPageComponent {
             this.getUsuarios();
           },
           error: (err) => {
-            this.mostrarDialog(
+            this.showDialog(
               'Error al eliminar el usuario',
               'Hubo un error al eliminar el usuario :(',
               null
@@ -61,7 +61,7 @@ export class UsersPageComponent {
           }
         });
       } else {
-        this.mostrarDialog(
+        this.showDialog(
           'Accion cancelada ',
           'Operación cancelada satisfactoriamente',
           null
@@ -70,7 +70,7 @@ export class UsersPageComponent {
     });
   }
 
-  mostrarDialog(tittle:string,message:string,action:string | null){
+  showDialog(tittle:string,message:string,action:string | null){
    const dialogRef = this.dialog.open(DialogComponent, {
       data: {
         title: tittle,
@@ -102,7 +102,7 @@ export class UsersPageComponent {
 actualizarUsuario(usuario: User): void {
   this.usuarioService.updateUser(usuario).subscribe({
     next: (response) => {
-      this.mostrarDialog(
+      this.showDialog(
         'Usuario actualizado con éxito',
         `Se actualizó a ${usuario.nickname} satisfactoriamente`,
         null
@@ -110,7 +110,7 @@ actualizarUsuario(usuario: User): void {
       this.getUsuarios(); // Actualiza la lista de usuarios
     },
     error: (error) => {
-      this.mostrarDialog(
+      this.showDialog(
         'Error al actualizar el usuario',
         `Hubo un error al actualizar a ${usuario.nickname} `,
         null
@@ -123,7 +123,7 @@ actualizarUsuario(usuario: User): void {
   agregarUsuario(usuario: User): void {
     this.usuarioService.addUser(usuario).subscribe({
       next: (response) => {
-        this.mostrarDialog(
+        this.showDialog(
           'Usuario agregado con éxito',
           `Se agregó a ${usuario.name} satisfactoriamente`,
           null
@@ -131,7 +131,7 @@ actualizarUsuario(usuario: User): void {
         this.getUsuarios();
       },
       error: (error) => {
-        this.mostrarDialog(
+        this.showDialog(
           'Error al agregar al usuario',
           `Hubo un error al agregar al usuario ${usuario.name}`,
           null

@@ -5,13 +5,14 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { MaterialModule } from '../material/material.module';
 import { DialogUserComponent } from './components/dialog-user/dialog-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { DialogProductComponent } from './components/dialog-product/dialog-product.component';
 
 @NgModule({
   declarations: [
     Error404PageComponent,
     DialogComponent,
     DialogUserComponent,
+    DialogProductComponent,
   ],
   imports: [
     CommonModule,
@@ -22,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
     Error404PageComponent,
     DialogComponent,
-    DialogUserComponent
+    DialogUserComponent,
+    DialogProductComponent
   ]
 })
 export class SharedModule { }
