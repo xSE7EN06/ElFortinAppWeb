@@ -31,8 +31,6 @@ export class UsersService {
   updateUser(user: User): Observable<User> {
     if (!user.id) throw Error('User ID is required');
     return this.http.put<User>(`${this.apiUrl}/${user.id}`, user);
-
-    console.log(user);
   }
   
 }
