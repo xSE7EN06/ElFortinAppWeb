@@ -6,7 +6,7 @@ import { User } from '../../shared/models/user/user';
   providedIn: 'root'
 })
 export class UsersService {
-  private apiUrl = 'https://fortin.christba.com/api/Users';
+  private apiUrl = 'https://fortin.christba.com/api/Usuarios';
 
   constructor(private http: HttpClient) {}
 
@@ -16,11 +16,11 @@ export class UsersService {
   }
 
   //Metodo para obtener un User mediante el id
-  getUserById(id: number): Observable<any> {
+  getUserById(id: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
-  deleteUser(id: number):Observable<any>{
+  deleteUser(id: string):Observable<any>{
     return this.http.delete(`${this.apiUrl}/${id}`);
   } 
 

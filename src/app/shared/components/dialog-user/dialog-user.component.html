@@ -1,0 +1,91 @@
+<h2 mat-dialog-title>{{ usuarioForm.value.id ? 'Editar Usuario' : 'Agregar Usuario' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="usuarioForm">
+    <!-- Nombre -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" required>
+    </mat-form-field>
+
+    <!-- Email -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" required>
+    </mat-form-field>
+
+     <!-- Teléfono -->
+     <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="phone" type="tel" required
+               (keypress)="sanitizePhoneInput($event)">
+        
+        <mat-error *ngIf="usuarioForm.get('phone')?.hasError('required')">
+          El teléfono es requerido
+        </mat-error>
+        <mat-error *ngIf="usuarioForm.get('phone')?.hasError('pattern')">
+          Solo se permiten números
+        </mat-error>
+        <mat-error *ngIf="usuarioForm.get('phone')?.hasError('minlength')">
+          Mínimo 10 dígitos
+        </mat-error>
+        <mat-error *ngIf="usuarioForm.get('phone')?.hasError('maxlength')">
+            Máximo 10 digitos
+        </mat-error>
+      </mat-form-field>
+    
+
+    <!-- Rol -->
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Rol</mat-label>
+        <mat-select formControlName="user_type" required>        
+          <mat-option value="worker">Trabajador</mat-option>
+          <mat-option value="client">Cliente</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+          <!-- NickName -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nombre de usuario</mat-label>
+      <input matInput formControlName="nickname" required>
+    </mat-form-field>
+
+   <!-- Campos de contraseña -->
+   <ng-container *ngIf="!isEditMode">
+    <!-- Contraseña -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="password" type="password" required>
+      <mat-error *ngIf="usuarioForm.get('password')?.hasError('required')">
+        La contraseña es requerida
+      </mat-error>
+      <mat-error *ngIf="usuarioForm.get('password')?.hasError('minlength')">
+        Mínimo 8 caracteres
+      </mat-error>
+    </mat-form-field>
+  
+    <!-- Confirmar contraseña -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Confirmar contraseña</mat-label>
+      <input matInput formControlName="confirm_password" type="password" required>
+      <mat-error *ngIf="usuarioForm.get('confirm_password')?.hasError('required')">
+        Por favor confirma tu contraseña
+      </mat-error>
+      <mat-error *ngIf="usuarioForm.hasError('mismatch')">
+        Las contraseñas no coinciden
+      </mat-error>
+    </mat-form-field>
+  </ng-container>
+  
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  
+ 
+  <button mat-button class="cancel-button" (click)="onNoClick()">Cancelar</button>
+  
+  <button mat-raised-button color="primary" class="confirm-button" (click)="onConfirm()" [disabled]="usuarioForm.invalid">
+    {{ usuarioForm.value.id ? 'Actualizar' : 'Agregar' }}
+  </button>
+</mat-dialog-actions>
