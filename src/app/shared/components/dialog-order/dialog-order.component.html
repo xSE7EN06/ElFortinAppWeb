@@ -1,0 +1,101 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Editar Orden' : 'Nueva Orden' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="orderForm">
+
+    <!-- Número de mesa -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Número de Mesa</mat-label>
+      <input matInput formControlName="table_number" type="number" required>
+      <mat-error *ngIf="orderForm.get('table_number')?.hasError('required')">
+        El número de mesa es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Fecha de la orden -->
+    <mat-form-field  *ngIf="isEditMode" appearance="fill" class="full-width">
+      <mat-label>Fecha de la Orden</mat-label>
+      <input matInput formControlName="order_date" [matDatepicker]="picker" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="orderForm.get('order_date')?.hasError('required')">
+        La fecha de la orden es requerida
+      </mat-error>
+      <mat-error *ngIf="orderForm.get('order_date')?.hasError('futureDate')">
+        La fecha no puede ser futura
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Monto total -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Monto Total</mat-label>
+      <input matInput formControlName="total_amount" type="number" step="1" required>
+      <mat-error *ngIf="orderForm.get('total_amount')?.hasError('required')">
+        El monto total es requerido
+      </mat-error>
+    </mat-form-field>
+
+
+    <!-- Costo pre-impuestos -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Costo Pre-impuestos</mat-label>
+      <input matInput formControlName="pre_tax_total" type="number" step="1" required>
+      <mat-error *ngIf="orderForm.get('pre_tax_total')?.hasError('required')">
+        El costo pre-impuestos es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Costo post-impuestos -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Costo Post-impuestos</mat-label>
+      <input matInput formControlName="post_tax_total" type="number" step="1" required>
+      <mat-error *ngIf="orderForm.get('post_tax_total')?.hasError('required')">
+        El costo post-impuestos es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Método de pago -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Método de Pago</mat-label>
+
+      <mat-select formControlName="payment_method_name" required>
+        <mat-option value="Efectivo">Efectivo</mat-option>
+        <mat-option value="Tarjeta de Crédito">Tarjeta de Crédito</mat-option>
+        <mat-option value="Pago Móvil">Pago Móvil</mat-option>
+      </mat-select>
+      
+      
+      <mat-error *ngIf="orderForm.get('payment_method_name')?.hasError('required')">
+        El método de pago es requerido
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Estado de la orden -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Estado de la Orden</mat-label>
+      
+      <mat-select formControlName="status_name" required>
+        <mat-option value="Pendiente">Pendiente</mat-option>
+        <mat-option value="En Espera">En Espera</mat-option>
+        <mat-option value="Listo para Recoger">Listo para Recoger</mat-option>
+        <mat-option value="Entregado">Entregado</mat-option>
+        <mat-option value="Cancelado">Cancelado</mat-option>
+      </mat-select>
+
+      <mat-error *ngIf="orderForm.get('status')?.hasError('required')">
+        El estado de la orden es requerido
+      </mat-error>
+    </mat-form-field>
+
+
+
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onConfirm()">
+    {{ isEditMode ? 'Actualizar' : 'Crear' }}
+  </button>
+</mat-dialog-actions>

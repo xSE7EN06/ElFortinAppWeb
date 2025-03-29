@@ -25,8 +25,17 @@ export class OrdersService {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
-  deleteOrder(id:number):Observable<any>{
+  deleteOrder(id:string):Observable<any>{
     return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+  addOrder(Order: Order):Observable<any>{
+    return this.http.post<Order>(`${this.apiUrl}`,Order)
+  }
+
+  updateOrder(order:Order):Observable<Order>{
+    if (!order.id) throw Error('Order ID is required');
+    return this.http.put<Order>(`${this.apiUrl}/${order.id}`, order);
   }
 
 }

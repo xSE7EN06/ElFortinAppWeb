@@ -7,7 +7,7 @@ import { DialogProductComponent } from './dialog-product/dialog-product.componen
 @NgModule({
   declarations: [MatDialogModule,
     DialogComponent,
-    DialogProductComponent,
+
   ],
   imports: [
     CommonModule,

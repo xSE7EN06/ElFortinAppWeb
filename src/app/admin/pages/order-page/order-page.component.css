@@ -1,0 +1,33 @@
+.container {
+    padding: 20px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  .mat-column-actions {
+    width: 120px;
+    text-align: center;
+  }
+  
+  .success-snackbar {
+    background-color: #4CAF50 !important;
+    color: white;
+  }
+  
+  .error-snackbar {
+    background-color: #f44336 !important;
+    color: white;
+  }

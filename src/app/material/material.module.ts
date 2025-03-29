@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 
 import { MatTableModule } from '@angular/material/table';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -38,7 +39,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatToolbarModule,
     MatStepperModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ]
 })
 export class MaterialModule { }
