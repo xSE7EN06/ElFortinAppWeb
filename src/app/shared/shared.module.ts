@@ -9,7 +9,7 @@ import { DialogProductComponent } from './components/dialog-product/dialog-produ
 import { DialogOrderComponent } from './components/dialog-order/dialog-order.component';
 import {DialogProviderComponent} from './components/dialog-provider/dialog-provider.component'
 import { DialogPromotionComponent } from './components/dialog-promotion/dialog-promotion.component';
-
+import { DialogSaleComponent } from './components/dialog-sale/dialog-sale.component';
 
 
 @NgModule({
@@ -20,7 +20,8 @@ import { DialogPromotionComponent } from './components/dialog-promotion/dialog-p
     DialogProductComponent,
     DialogOrderComponent,
     DialogProviderComponent,
-    DialogPromotionComponent
+    DialogPromotionComponent,
+    DialogSaleComponent
   ],
   imports: [
     CommonModule,

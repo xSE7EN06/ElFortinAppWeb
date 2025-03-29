@@ -11,7 +11,7 @@ import { RestaurantPageComponent } from './pages/restaurant-page/restaurant-page
 import { SalePageComponent } from './pages/sale-page/sale-page.component';
 import { ProviderPageComponent } from './pages/provider-page/provider-page.component';
 import { PromotionPageComponent } from './pages/promotion-page/promotion-page.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { PromotionPageComponent } from './pages/promotion-page/promotion-page.co
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

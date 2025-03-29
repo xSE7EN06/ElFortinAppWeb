@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>{{ isEditMode ? 'Editar Venta' : 'Nueva Venta' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="saleForm">
+
+    <!-- Restaurante -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Restaurante</mat-label>
+      <input matInput formControlName="restaurant_id" required>
+    </mat-form-field>
+
+   <!-- Fecha  -->
+   <mat-form-field  *ngIf="isEditMode" appearance="fill" class="full-width">
+    <mat-label>Fecha</mat-label>
+    <input matInput formControlName="report_date" [matDatepicker]="picker" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="saleForm.get('report_date')?.hasError('required')">
+      La fecha  es requerida
+    </mat-error>
+    <mat-error *ngIf="saleForm.get('report_date')?.hasError('futureDate')">
+      La fecha no puede ser futura
+    </mat-error>
+  </mat-form-field>
+
+       <!-- Total   -->
+       <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Total</mat-label>
+        <input matInput formControlName="total_sales" >
+      </mat-form-field>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onConfirm()">
+    {{ isEditMode ? 'Actualizar' : 'Crear' }}
+  </button>
+</mat-dialog-actions>
