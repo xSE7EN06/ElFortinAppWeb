@@ -56,6 +56,12 @@ export class AuthService {
    getToken(): string | null {
     return localStorage.getItem('userToken');
   }
+  
+  isAuthenticated(): boolean {
+    const token = this.getToken();
+    // Si hay token, devuelve true (autenticado), si no, false
+    return !!token; 
+  }
 
 }
 

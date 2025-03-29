@@ -12,6 +12,7 @@ import { SalePageComponent } from './pages/sale-page/sale-page.component';
 import { ProviderPageComponent } from './pages/provider-page/provider-page.component';
 import { PromotionPageComponent } from './pages/promotion-page/promotion-page.component';
 import { FormsModule } from '@angular/forms';
+import { ArduinoPageComponent } from './pages/arduino-page/arduino-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     RestaurantPageComponent,
     SalePageComponent,
     ProviderPageComponent,
-    PromotionPageComponent
+    PromotionPageComponent,
+    ArduinoPageComponent
   ],
   imports: [
     CommonModule,
