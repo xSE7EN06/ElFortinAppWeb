@@ -4,11 +4,8 @@ export interface Promotion {
     description: string;
     discount_type: string;
     value: string;
-    start_date: Date;
-    end_date: Date;
+    start_date: string;
+    end_date: string;
     active: boolean;
-    created_at: Date;
-    updated_at: Date;
-    deleted_at: Date | null;
   }
   

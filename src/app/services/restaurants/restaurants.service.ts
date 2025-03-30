@@ -19,7 +19,7 @@ export class RestaurantsService {
       );
   }
 
-  getRestaurantById(id:number):Observable<Restaurant>{
+  getRestaurantById(id:string):Observable<Restaurant>{
     return this.http.get<{ data: Restaurant }>(`${this.apiUrl}/${id}`).pipe(
       map(response => response.data)  // Extrae solo el array 'data' de la respuesta
     );

@@ -1,15 +1,109 @@
-.button-add {
-    mat-icon{
-        display: flex;
-        align-items: center;
-        color:green;
+/* Estilos generales del contenedor */
+mat-sidenav-container {
+    background-color: #FFF8F0; /* Fondo crema claro como masa de pan */
+    font-family: 'Comfortaa', cursive;
+  }
+  
+  /* Barra de herramientas superior */
+  mat-toolbar {
+    background-color: #8B4513 !important; /* Café oscuro como pan integral */
+    color: white !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+    
+    button[mat-icon-button] {
+      color: white !important;
+      transition: transform 0.3s;
+      
+      &:hover {
+        transform: scale(1.1);
+      }
     }
-}
-
-.button-exit{
-    display: block;  /* Asegúrate de que el botón sea un bloque */
-    margin-left: auto;  /* Esto empuja el botón hacia la derecha */
-    margin-right: 0;  /* Opcional: si deseas asegurarte de que no tenga margen a la derecha */
+    
+    .spacer {
+      flex: 1 1 auto;
+    }
+    
+    button[mat-button] {
+      color: white;
+      border-radius: 20px;
+      padding: 0 15px;
+      transition: all 0.3s;
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
   
-}
+  /* Panel lateral */
+  mat-sidenav {
+    background-color: #D2B48C !important; /* Café claro como pan tostado */
+    border-right: 1px solid #A0522D;
+    
+    mat-toolbar {
+      background-color: #A0522D !important; /* Café terracota */
+    }
+    
+    mat-nav-list {
+      padding-top: 0;
+      
+      mat-list-item {
+        color: #5C3A21; /* Café oscuro */
+        transition: all 0.3s;
+        border-bottom: 1px solid #DEB887;
+        
+        &:hover {
+          background-color: #DEB887 !important; /* Café claro al pasar el mouse */
+          color: #5C3A21;
+        }
+        
+        &.active {
+          background-color: #BC8F8F !important; /* Café rosado */
+          color: white;
+        }
+        
+        mat-icon {
+          color: #5C3A21; /* Café oscuro para íconos */
+          margin-right: 10px;
+        }
+      }
+    }
+  }
   
+  /* Contenido principal */
+  .container {
+    padding: 20px;
+    background-color: #FFF5E6; /* Fondo ligeramente más cálido */
+    min-height: calc(100vh - 64px); /* Ajuste para la altura del toolbar */
+  }
+  
+  /* Tipografía */
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&display=swap');
+  
+  /* Efectos adicionales */
+  mat-sidenav-container {
+    transition: all 0.3s ease;
+  }
+  
+  /* Estilo para el router-outlet */
+  router-outlet + * {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    mat-sidenav {
+      width: 200px !important;
+    }
+    
+    .container {
+      padding: 10px;
+    }
+  }

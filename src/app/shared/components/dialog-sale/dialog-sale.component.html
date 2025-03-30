@@ -1,0 +1,67 @@
+<h2 mat-dialog-title class="dialog-title">
+  <mat-icon class="title-icon">{{ isEditMode ? 'edit' : 'receipt' }}</mat-icon>
+  {{ isEditMode ? 'Editar Venta' : 'Nueva Venta' }}
+</h2>
+
+<div class="dialog-content-container">
+  <mat-dialog-content class="dialog-content">
+    <form [formGroup]="saleForm" class="sale-form">
+      
+      <!-- Restaurante -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Restaurante</mat-label>
+        <mat-select formControlName="restaurant_id" required>
+          <mat-option *ngFor="let restaurant of restaurants" [value]="restaurant.id">
+            <div class="restaurant-option">
+              <mat-icon>restaurant</mat-icon>
+              <span>{{restaurant.name}}</span>
+            </div>
+          </mat-option>
+        </mat-select>
+        <mat-icon matPrefix>store</mat-icon>
+        <mat-error *ngIf="saleForm.get('restaurant_id')?.hasError('required')">
+          Seleccione un restaurante
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Fecha -->
+      <mat-form-field *ngIf="isEditMode" appearance="outline" class="full-width">
+        <mat-label>Fecha</mat-label>
+        <input matInput formControlName="report_date" [matDatepicker]="picker" required>
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-icon matPrefix>event</mat-icon>
+        <mat-error *ngIf="saleForm.get('report_date')?.hasError('required')">
+          La fecha es requerida
+        </mat-error>
+        <mat-error *ngIf="saleForm.get('report_date')?.hasError('futureDate')">
+          No puede ser fecha futura
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Total -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Total</mat-label>
+        <input matInput formControlName="total_sales" type="number" step="0.01" required>
+        <span matPrefix>$&nbsp;</span>
+        <mat-icon matSuffix>attach_money</mat-icon>
+        <mat-error *ngIf="saleForm.get('total_sales')?.hasError('required')">
+          El total es requerido
+        </mat-error>
+      </mat-form-field>
+
+    </form>
+  </mat-dialog-content>
+</div>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-stroked-button color="warn" (click)="onNoClick()">
+    <mat-icon>cancel</mat-icon> Cancelar
+  </button>
+  <button mat-raised-button color="primary" (click)="onConfirm()">
+    <mat-icon>{{ isEditMode ? 'save' : 'add' }}</mat-icon>
+    {{ isEditMode ? 'Actualizar' : 'Crear' }}
+  </button>
+</mat-dialog-actions>

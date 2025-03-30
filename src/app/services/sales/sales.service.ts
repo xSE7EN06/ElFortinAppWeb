@@ -21,8 +21,21 @@ export class SalesService {
   }
 
   //Metodo para obtener una venta por id
-  getSaleById(id: number): Observable<any> {
+  getSaleById(id: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
+  addSale(sale: Sale):Observable<Sale>{
+    return this.http.post<Sale>(`${this.apiUrl}`, sale);
+  }
+
+  updateSale(sale: Sale): Observable<Sale>{
+     if(!sale.id) throw Error('Sale ID is required');
+      return this.http.put<Sale>(`${this.apiUrl}/${sale.id}`, sale);
+  }
+
+  deleteSale(id: string):Observable<any>{
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 
 }

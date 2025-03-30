@@ -1,14 +1,10 @@
 export interface User {
-    id: number;
+    id: string 
     name: string;
     email: string;
-    phone: string;
-    imageUrl: string;
+    phone:string;
     user_type: string;
-    nickname: string;
-    encryptedPassword: string;
-    createdAt: Date;
-    updatedAt: Date;
-    deletedAt?: Date | null;
+    nickname:string;
+    password: string;
+    encrypted_password?:string;
 }
-  

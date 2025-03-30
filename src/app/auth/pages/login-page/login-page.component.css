@@ -69,3 +69,15 @@ mat-card-title {
 .text{
   font-size: 13px;
 }
+
+.back-button{
+  display: flex;
+  align-self: start;
+  align-items: end;
+  margin-right: 40px;
+}
+
+.container-back-button{
+  margin: end;
+  margin-right: 10000px
+}

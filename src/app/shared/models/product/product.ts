@@ -3,13 +3,10 @@ export interface Product {
     restaurantId?: string | null;
     name: string;
     description: string;
-    price: string;
+    price: number;
     imageUrl: string;
-    categoryName: string;
-    preTaxCost: string;
-    postTaxCost: string;
-    createdAt: string;
-    updatedAt: string;
-    deletedAt?: string | null; 
+    category_name: string;
+    pre_tax_cost: number;
+    post_tax_cost: number;
  }
   

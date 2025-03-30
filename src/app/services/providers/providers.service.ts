@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { Provider } from '@angular/core';
-
+import { Provider } from '../../shared/models/provider/provider';
 @Injectable({
   providedIn: 'root'
 })
@@ -24,4 +23,16 @@ export class ProvidersService {
     return this.http.get(`${this.apiUrl}/${id}`);
   }
 
+  addProvider(provider: Provider):Observable<Provider>{
+    return this.http.post<Provider>(`${this.apiUrl}`, provider);
+  }
+
+  updateProvider(provider: Provider): Observable<Provider>{
+     if(!provider.id) throw Error('Provider ID is required');
+      return this.http.put<Provider>(`${this.apiUrl}/${provider.id}`, provider);
+  }
+
+  deleteProvider(id: string):Observable<any>{
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 }

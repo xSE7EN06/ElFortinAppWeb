@@ -1,18 +1,29 @@
-<h2 mat-dialog-title class="dialog-title">{{ data.title }}</h2>
+<h2 mat-dialog-title class="dialog-title">
+  <mat-icon class="title-icon">{{ getTitleIcon() }}</mat-icon>
+  {{ data.title }}
+</h2>
 
-<mat-dialog-content class="dialog-content">
-  <p>{{ data.message }}</p>
-</mat-dialog-content>
+<div class="dialog-content-container">
+  <mat-dialog-content class="dialog-content">
+    <div class="message-container">
+      <mat-icon class="message-icon">{{ getMessageIcon() }}</mat-icon>
+      <p class="message-text">{{ data.message }}</p>
+    </div>
+  </mat-dialog-content>
+</div>
 
-<mat-dialog-actions *ngIf="data.action" class="dialog-actions">
-  <!-- Botones de Confirmar / Cancelar para acciones como eliminar -->
-  <button mat-button class="cancel-button" (click)="onNoClick()">Cancelar</button>
-  <button mat-raised-button color="warn" class="confirm-button" (click)="onConfirm()">
+<mat-dialog-actions *ngIf="data.action" align="end" class="dialog-actions">
+  <button mat-stroked-button color="basic" (click)="onNoClick()">
+    <mat-icon>cancel</mat-icon> Cancelar
+  </button>
+  <button mat-raised-button [color]="getActionColor()" (click)="onConfirm()">
+    <mat-icon>{{ getActionIcon() }}</mat-icon>
     {{ data.action }}
   </button>
 </mat-dialog-actions>
 
-<mat-dialog-actions *ngIf="!data.action" class="dialog-actions">
-  <!-- Solo un botón para casos de éxito -->
-  <button mat-raised-button color="primary" class="ok-button" (click)="onConfirm()">OK</button>
+<mat-dialog-actions *ngIf="!data.action" align="center" class="dialog-actions">
+  <button mat-raised-button color="primary" (click)="onConfirm()">
+    <mat-icon>check_circle</mat-icon> Entendido
+  </button>
 </mat-dialog-actions>

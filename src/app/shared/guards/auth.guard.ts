@@ -1,16 +1,32 @@
-import { CanActivateFn } from '@angular/router';
+import { Injectable } from "@angular/core";
+import { ActivatedRouteSnapshot, CanActivate, CanMatch, GuardResult, MaybeAsync, Route, Router, RouterStateSnapshot, UrlSegment } from "@angular/router";
+import { catchError, map, Observable, of, tap } from 'rxjs';
+import { AuthService } from "../../services/auth/auth.service";
 
-// Función guard que verifica si el usuario está autenticado
-export const authGuard: CanActivateFn = (route, state) => {
+@Injectable({providedIn: 'root'})
+export class AuthGuard implements CanActivate, CanMatch{
+    constructor(
+        private authService: AuthService,
+        private router: Router
+    ){}
 
-  // Verifica si el token de usuario está en localStorage (simulando autenticación)
-  const token = localStorage.getItem('userToken');
-
-  // Si el token existe, el usuario está autenticado, así que podemos permitir el acceso
-  if (token) {
-    return true;
-  } else {
-    // Si no hay token, redirige a la página de inicio de sesión (por ejemplo)
-    return false;
+    private checkAuthStatus(): boolean {
+      const isAuthenticated = this.authService.isAuthenticated();
+      console.log('Authenticated: ', isAuthenticated);
+      
+      if (!isAuthenticated) {
+          this.router.navigate(['./auth/login']);
+      }
+      
+      return isAuthenticated;
   }
-};
+
+    canMatch(route: Route,segments: UrlSegment[]):boolean | Observable<boolean>{
+        return this.checkAuthStatus();
+    }
+
+    canActivate(route:ActivatedRouteSnapshot, state:RouterStateSnapshot):boolean | Observable<boolean>{
+        return this.checkAuthStatus();
+    }
+
+}

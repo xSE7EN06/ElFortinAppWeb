@@ -50,6 +50,10 @@ export class LoginPageComponent {
   }
 }
 
+exit(){
+  this.route.navigate(['/inicio']);
+}
+
   register(){
     this.route.navigate(['/auth/register']);
   }

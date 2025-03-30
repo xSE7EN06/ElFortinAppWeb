@@ -1,94 +1,129 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dialog-user',
-  standalone: false,
   templateUrl: './dialog-user.component.html',
-  styleUrl: './dialog-user.component.scss'
+  styleUrls: ['./dialog-user.component.scss']
 })
 export class DialogUserComponent implements OnInit {
   usuarioForm: FormGroup;
-  updatePassword: boolean = false;
+  isEditMode: boolean = false;
+  showPasswordFields: boolean = false;
 
   constructor(
-    
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<DialogUserComponent>,
-    private snackBar:MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-
+    private snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.usuarioForm = this.fb.group({    
-      id: ['', Validators.required],
+    this.isEditMode = !!data?.id;
+    
+    this.usuarioForm = this.fb.group({
+      id: [''],
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required,],
+      phone: ['', [
+        Validators.required,
+        Validators.pattern(/^[0-9]+$/),
+        Validators.minLength(10),
+        Validators.maxLength(10)
+      ]],
       user_type: ['', Validators.required],
       nickname: ['', Validators.required],
-      encrypted_password: [{ value: '', disabled: true }],
-      confirm_password: [{ value: '', disabled: true }],
-    });
+      password: [''],
+      confirm_password: ['']
+    }, { validator: this.passwordMatchValidator });
+
+    if (!this.isEditMode) {
+      this.setPasswordValidators(true);
+    }
   }
 
   ngOnInit(): void {
-    if (this.data?.id) {
-      // Si hay un usuario, llenar el formulario con su información, incluyendo el ID
+    if (this.isEditMode) {
       this.usuarioForm.patchValue({
-        id: this.data.id, // Asegurar que el ID se establece
-        name: this.data.name,        
+        id: this.data.id,
+        name: this.data.name,
         email: this.data.email,
         phone: this.data.phone,
         user_type: this.data.user_type,
         nickname: this.data.nickname
       });
-    } else {
-      // Si es un nuevo usuario, quitar la validación de 'required' en el ID
-      this.usuarioForm.get('id')?.clearValidators();
-      this.usuarioForm.get('id')?.updateValueAndValidity();
+      
+      // Ocultar campos de contraseña inicialmente
+      this.showPasswordFields = false;
     }
-  }
-  
 
-  onNoClick(): void {
-    this.dialogRef.close();
+    this.setupPasswordValidation();
+  }
+
+  private setPasswordValidators(required: boolean): void {
+    const validators = required ? [Validators.required, Validators.minLength(8)] : [];
+    this.usuarioForm.get('password')?.setValidators(validators);
+    this.usuarioForm.get('confirm_password')?.setValidators(required ? [Validators.required] : []);
+    this.usuarioForm.updateValueAndValidity();
+  }
+
+  private setupPasswordValidation(): void {
+    this.usuarioForm.get('password')?.valueChanges.subscribe(() => {
+      this.usuarioForm.get('confirm_password')?.updateValueAndValidity();
+    });
+
+    this.usuarioForm.get('confirm_password')?.valueChanges.subscribe(() => {
+      this.usuarioForm.updateValueAndValidity();
+    });
+  }
+
+  passwordMatchValidator = (g: FormGroup) => {
+    const password = g.get('password')?.value;
+    const confirmPassword = g.get('confirm_password')?.value;
+
+    // Validar solo si al menos un campo tiene valor
+    if (password || confirmPassword) {
+      if (password !== confirmPassword) {
+        return { mismatch: true };
+      }
+    }
+    return null;
   }
 
   onConfirm(): void {
-    if (this.usuarioForm.valid) {
-      if (this.updatePassword) {
-        const password = this.usuarioForm.get('encrypted_password')?.value;
-        const confirmPassword = this.usuarioForm.get('confirm_password')?.value;
-
-        if (password !== confirmPassword) {
-          console.log("❌ Las contraseñas no coinciden");
-          this.snackBar.open('❌ Las contraseñas no coinciden', 'Cerrar', { duration: 3000 });
-          return;
-        }
+    if (this.usuarioForm.invalid) {
+      if (this.usuarioForm.hasError('mismatch')) {
+        this.snackBar.open('Las contraseñas no coinciden', 'Cerrar', { duration: 3000 });
       }
+      return;
+    }
 
-      const updatedData = { ...this.data, ...this.usuarioForm.value };
-      this.dialogRef.close(updatedData);
+    const formData = this.usuarioForm.value;
+    
+    // Si es edición y no se modificó la contraseña, mantener la original
+    if (this.isEditMode && !formData.password) {
+      formData.password = this.data.password;
+      formData.confirm_password = this.data.password;
+    }
+
+    this.dialogRef.close(formData);
+  }
+
+  togglePasswordFields(): void {
+    this.showPasswordFields = !this.showPasswordFields;
+    this.setPasswordValidators(this.showPasswordFields);
+  }
+
+  sanitizePhoneInput(event: any) {
+    const pattern = /[0-9]/;
+    const inputChar = String.fromCharCode(event.charCode);
+    
+    if (!pattern.test(inputChar)) {
+      event.preventDefault();
     }
   }
 
-  togglePasswordField(): void {
-    const passwordControl = this.usuarioForm.get('encrypted_password');
-    const passwordConfirmControl = this.usuarioForm.get('confirm_password');
-
-    if (passwordControl?.disabled && passwordConfirmControl?.disable ) {
-      passwordControl.enable(); //  Habilita el campo
-      passwordConfirmControl.enable();
-      this.updatePassword = true
-    
-    } else {
-      passwordControl?.disable(); //  Deshabilita el campo
-      passwordConfirmControl?.disable();
-      this.updatePassword = false;
-    
-    }
-    
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

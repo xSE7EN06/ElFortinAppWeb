@@ -1,8 +1,14 @@
 <div class="login-page">
   <mat-card>
+    <div class="container-back-button">
+    <button mat-raised-button class="back-button" color="primary" (click)="exit()">             
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="arrow_back"></mat-icon>
+     </button>
+    </div>
     <div class="card-layout">
       <div class="form-container">
         <mat-card-header>
+          
           <mat-card-title>Iniciar Sesión</mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -11,7 +17,7 @@
               <mat-label>Nombre de Usuario</mat-label>
               <input matInput formControlName="emailOrNickname">
               <mat-error *ngIf="loginForm.get('emailOrNickname')?.errors?.['required']">
-                El nombre de usuario es obligatorio.
+                El nombre de usuario es obligatorio.  
               </mat-error>
             </mat-form-field>
             
@@ -30,7 +36,9 @@
             <button mat-raised-button color="primary" [disabled]="isLoading">
               <mat-spinner *ngIf="isLoading" diameter="24"></mat-spinner>
               <span *ngIf="!isLoading">Iniciar sesión</span>
-            </button>            
+            </button>
+
+
             <br>  
             <br>
             <p class="text">¿No tienes una cuenta? <strong><a (click)="register()" style="cursor: pointer; color: blue;">Crear cuenta</a></strong></p>
